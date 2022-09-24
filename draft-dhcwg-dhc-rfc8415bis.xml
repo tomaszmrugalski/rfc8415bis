@@ -12,9 +12,9 @@
 <?rfc subcompact="no" ?>
 <?rfc text-list-symbols="-*+o"?> 
 
-<rfc category="std" number="8415"
+<rfc category="std" docName="draft-dhcwg-dhc-rfc8415bis-00"
      ipr="pre5378Trust200902"
-     obsoletes="3315, 3633, 3736, 4242, 7083, 7283, 7550"
+     obsoletes="8415"
      submissionType="IETF" consensus="yes">
 
   <front>
@@ -43,62 +43,23 @@
       </address>
     </author>
 
-    <author fullname="Marcin Siodelski" initials="M" surname="Siodelski">
-      <organization abbrev="ISC">Internet Systems Consortium,
-      Inc.</organization>
-
-      <address>
-        <postal>
-          <street>950 Charter Street</street>
-
-          <city>Redwood City</city>
-
-          <region>CA</region>
-
-          <code>94063</code>
-
-          <country>United States of America</country>
-        </postal>
-
-        <email>msiodelski@gmail.com</email>
-      </address>
-    </author>
-
     <author fullname="Bernie Volz" initials="B" surname="Volz">
-      <organization abbrev="Cisco">Cisco Systems, Inc.</organization>
+      <organization abbrev="Individual Contributor">Individual Contributor</organization>
 
       <address>
         <postal>
-          <street>1414 Massachusetts Ave.</street>
+          <street>116 Hawkins Pond Road</street>
 
-          <city>Boxborough</city>
+          <city>Center Harbor</city>
 
-          <region>MA</region>
+          <region>NH</region>
 
-          <code>01719</code>
+          <code>03226</code>
 
           <country>United States of America</country>
         </postal>
 
-        <email>volz@cisco.com</email>
-      </address>
-    </author>
-
-    <author fullname="Andrew Yourtchenko" initials="A" surname="Yourtchenko">
-      <organization abbrev="Cisco">Cisco Systems, Inc.</organization>
-
-      <address>
-        <postal>
-          <street>De kleetlaan 6a</street>
-
-          <city>Diegem</city>
-
-          <code>BRABANT 1831</code>
-
-          <country>Belgium</country>
-        </postal>
-
-        <email>ayourtch@cisco.com</email>
+        <email>bevolz@gmail.com</email>
       </address>
     </author>
 
@@ -142,48 +103,28 @@
       </address>
     </author>
 
-    <author fullname="Ted Lemon" initials="T" surname="Lemon">
-      <organization abbrev="Nibbhaya Consulting">Nibbhaya Consulting</organization>
-
-      <address>
-        <postal>
-          <street>P.O. Box 958</street>
-
-          <city>Brattleboro</city>
-
-          <region>VT</region>
-
-          <code>05301-0958</code>
-
-          <country>United States of America</country>
-        </postal>
-
-        <email>mellon@fugue.com</email>
-      </address>
-    </author>
-
     <author fullname="Timothy Winters" initials="T" surname="Winters">
-      <organization abbrev="UNH-IOL">University of New Hampshire, Interoperability Lab (UNH-IOL)</organization>
+      <organization abbrev="QA Cafe">QA Cafe</organization>
 
       <address>
         <postal>
 
-          <street/>
+          <street>100 Main Street, Suite #212</street>
 
-          <city>Durham, NH</city>
+          <city>Dover</city>
 
-          <region></region>
+          <region>NH</region>
 
-          <code></code>
+          <code>03820</code>
 
           <country>United States of America</country>
         </postal>
 
-        <email>twinters@iol.unh.edu</email>
+        <email>tim@qacafe.com</email>
       </address>
     </author>
 
-    <date month="November" year="2018"/>
+    <date year="2022"/>
 
     <keyword>DHCPv6</keyword>
     <keyword>IPv6</keyword>
@@ -198,16 +139,9 @@
       either in place of or in addition to stateless address autoconfiguration
       (SLAAC).</t>
 
-      <t>This document updates the text from RFC 3315 (the original DHCPv6
-      specification) and incorporates prefix delegation (RFC 3633),
-      stateless DHCPv6 (RFC 3736), an option to specify an upper
-      bound for how long a client should wait before refreshing information
-      (RFC 4242), a mechanism for throttling DHCPv6 clients when DHCPv6
-      service is not available (RFC 7083), and relay agent handling of
-      unknown messages (RFC 7283). In addition, this document clarifies the
-      interactions between models of operation (RFC 7550).
-      As such, this document obsoletes RFC 3315, RFC 3633, RFC 3736, RFC 4242,
-      RFC 7083, RFC 7283, and RFC 7550.</t>
+      <t>This document replaces RFC8415 to incorporate reported errata and to
+      deprecate assignment of temporary addresses (the IA_TA option) and the
+      server unicast capability (the Server Unicast option).</t>
     </abstract>
   </front>
 
@@ -227,8 +161,7 @@
       to carry configuration information not specified in this document.</t>
 
       <t>DHCPv6 also provides a mechanism for automated delegation of
-      IPv6 prefixes using DHCPv6, as originally specified in <xref
-      target="RFC3633"/>. Through this mechanism, a delegating router
+      IPv6 prefixes using DHCPv6. Through this mechanism, a delegating router
       can delegate prefixes to requesting routers. Use of this mechanism is
       specified as part of <xref target="RFC7084"/> and by <xref
       target="TR-187"/>.</t>
@@ -237,9 +170,7 @@
       (i.e., no addresses or prefixes). That implies that the
       server does not have to track any state; thus, this mode is called
       "stateless DHCPv6". Mechanisms necessary to support stateless DHCPv6 are
-      much smaller than mechanisms needed to support stateful DHCPv6.
-      <xref target="RFC3736"/> was written to document just those portions of
-      DHCPv6 needed to support DHCPv6 stateless operation.</t>
+      much smaller than mechanisms needed to support stateful DHCPv6.</t>
 
       <t>The remainder of this introduction summarizes the relationship to the
       previous DHCPv6 standards (see <xref target="previous-dhcp6"/>) and
@@ -271,12 +202,18 @@
         Stateful DHCPv6 Options")</t>
       </list></t>
 
-        <t>This document provides a unified, corrected, and cleaned-up
-        definition of DHCPv6 that also covers all applicable errata filed
-        against older RFCs (see the list in <xref target="ChangeSummary"/>).
-        As such, it obsoletes the RFCs listed in the previous paragraph.
-        Also, there are a small number of mechanisms that were obsoleted;
-        see <xref target="obsolete"/> and <xref target="ChangeSummary"/>.</t>
+        <t><xref target="RFC8415"/> provided a unified, corrected, and cleaned-up
+        definition of DHCPv6 that also covered all applicable errata filed
+        against older RFCs. It also obsoleted a small number of mechanisms.</t>
+
+        <t>This document obsoletes <xref target="RFC8415"/> by applying all
+        applicable errata and obsoleting two features that have not
+        been widely implemented - the assignment of temporary addresses
+        using the IA_TA option and allowing clients to unicast some messages
+        directly to the server if the server sent the Server Unicast option
+        to a client in an early exchange.
+        For a complete list of changes made to <xref target="RFC8415"/> 
+        see <xref target="ChangeSummary"/>.</t>
       </section>
 
       <section anchor="dhcpv4" title="Relationship to DHCPv4">
@@ -451,7 +388,8 @@
             clients on the same link, does not require a binding. A binding
             containing information about an IA is indexed by the tuple
             &lt;DUID, IA&nbhy;type, IAID&gt; (where IA-type is the type of
-            lease in the IA -- for example, temporary). A binding containing
+            lease in the IA -- for example, address or delegated prefix). A
+            binding containing
             configuration information for a client is indexed by
             &lt;DUID&gt;. See below for definitions of DUID, IA, and IAID.</t>
 
@@ -506,7 +444,7 @@
              
             <t hangText="encapsulated option">A DHCP option that is usually
             only contained in another option. For example, the IA Address
-            option is contained in IA_NA or IA_TA options (see
+            option is contained in IA_NA options (see
             <xref target="RFC3315-22.5"/>). See Section&nbsp;9 of
             <xref target="RFC7227"/> for a more complete definition.</t>
 
@@ -514,17 +452,17 @@
             assigned to a client. Each IA has an associated IAID (see below).
             A client may have more than one IA assigned to it -- for example,
             one for each of its interfaces. Each IA holds one type of
-            lease; for example, an identity association for temporary
-            addresses (IA_TA) holds temporary addresses, and an identity
-            association for prefix delegation (IA_PD) holds delegated
-            prefixes. Throughout this document, "IA" is used to refer to
+            lease; for example, an identity association for non-temporary
+            addresses (IA_NA) holds an address, and an identity
+            association for prefix delegation (IA_PD) holds a delegated
+            prefix. Throughout this document, "IA" is used to refer to
             an identity association without identifying the type
             of a lease in the IA. At the time of writing this document, there
-            are three IA types defined: IA_NA, IA_TA, and IA_PD. New IA types
+            are three IA types defined: IA_NA, IA_TA (obsoleted), and IA_PD. New IA types
             may be defined in the future.</t>
              
             <t hangText="IA option(s)">At the time of writing this document,
-            one or more IA_NA, IA_TA, and/or IA_PD options. New IA types may
+            one or more IA_NA, IA_TA (obsoleted), and/or IA_PD options. New IA types may
             be defined in the future.</t>
 
             <t hangText="IAID">Identity Association Identifier: an identifier
@@ -533,8 +471,7 @@
             belong to that client.</t>
 
             <t hangText="IA_NA">Identity Association for Non&nbhy;temporary
-            Addresses: an IA that carries assigned addresses that are not
-            temporary addresses (see "IA_TA"). See <xref
+            Addresses: an IA that carries assigned addresses. See <xref
             target="RFC3315-22.4"/> for details on the IA_NA option.</t>
 
             <t hangText="IA_PD">Identity Association for Prefix Delegation: an
@@ -544,8 +481,8 @@
 
             <t hangText="IA_TA">Identity Association for Temporary Addresses:
             an IA that carries temporary addresses (see <xref
-            target="RFC4941"/>). See <xref target="RFC3315-22.5"/>
-            for details on the IA_TA option.</t>
+            target="RFC4941"/>). See <xref target="RFC8415"/>
+            for details on the now obsoleted IA_TA option.</t>
 
             <t hangText="lease">A contract by which the server grants the use
             of an address or delegated prefix to the client for a specified
@@ -625,7 +562,7 @@
      addresses determined through other mechanisms for transmitting and
      receiving DHCP messages.</t>
 
-     <t>A DHCP client sends most messages using a reserved, link-scoped
+     <t>A DHCP client sends messages using a reserved, link-scoped
      multicast destination address so that the client need not be
      configured with the address or addresses of DHCP servers.</t>
 
@@ -635,10 +572,6 @@
      the relay agent is transparent to the client. The discussion of
      message exchanges in the remainder of this section will omit the
      description of the relaying of messages by relay agents.</t>
-
-     <t>Once the client has determined the address of a server, it may,
-     under some circumstances, send messages directly to the server using
-     unicast.</t>
 
       <section anchor="RFC3315-1.2"
                title="Client/Server Exchanges Involving Two Messages">
@@ -673,7 +606,6 @@
         requesting the assignment of addresses and/or delegated prefixes and other configuration
         information. This message includes an indication (the Rapid Commit
         option; see <xref target="RFC3315-22.14"/>) that the client is
-
         willing to accept an immediate Reply message from the server. The
         server that is willing to commit the assignment of addresses and/or
         delegated prefixes to the client immediately responds with a Reply
@@ -935,20 +867,6 @@
 
       </section>
 
-      <section anchor="OpModes-TA" title="DHCP for Temporary Addresses">
-        <t>Temporary addresses were originally introduced to avoid privacy
-        concerns with stateless address autoconfiguration, which based
-        64&nbsp;bits of the address on the EUI-64
-        (see <xref target="RFC4941"/>.  They were added to DHCP to provide
-        complementary support when stateful address assignment is used.</t>
-
-        <t>Temporary address assignment works mostly like non-temporary
-        address assignment (see <xref target="OpModes-NA"/>); however,
-        these addresses are generally intended to be used for a short period
-        of time and not to have their lifetimes extended, though they can be
-        if required.</t>
-      </section>
-
       <section anchor="multiple-addrs" title="Multiple Addresses and Prefixes">
         <t>DHCP allows a client to receive multiple addresses.
         During typical operation, a client sends one instance
@@ -961,11 +879,10 @@
         option (see <xref target="RFC3315-22.4"/>).</t>
 
         <t>A client can explicitly request multiple addresses by sending
-        multiple IA_NA options (and/or IA_TA options; see
-        <xref target="RFC3315-22.5"/>). A client can send multiple
-        IA_NA (and/or IA_TA) options in its initial transmissions.
+        multiple IA_NA options. A client can send multiple
+        IA_NA options in its initial transmissions.
         Alternatively, it can send an extra Request message
-        with additional new IA_NA (and/or IA_TA) options (or include them
+        with additional new IA_NA options (or include them
         in a Renew message).</t>
 
         <t>The same principle also applies to prefix delegation. In
@@ -1802,10 +1719,6 @@
         target="RFC3315-22.4"/> for details regarding the representation of an IA_NA in a
         DHCP message.</t>
 
-        <t>The configuration information in an IA_TA option consists of one or more IPv6
-        addresses. See <xref target="RFC3315-22.5"/> for details regarding the representation of an
-        IA_TA in a DHCP message.</t>
-
         <t>Each address in an IA has a preferred lifetime and a valid
         lifetime, as defined in <xref target="RFC4862"/>. The lifetimes
         are transmitted from the DHCP server to the client in the IA Address
@@ -1868,15 +1781,6 @@
                 Relay-forward, and in general the most encapsulated
                 (closest Relay-forward to the client) has the most
                 useful value.</t>
-
-                <t>If the server receives the message directly
-                from the client and the source address in the IP datagram in
-                which the message was received is not a link-local address,
-                then the client is on the link identified by the source
-                address in the IP datagram (note that this situation can occur
-                only if the server has enabled the use of unicast message
-                delivery by the client and the client has sent a message for
-                which unicast delivery is allowed).</t>
               </list></t>
 
             <t>The DUID supplied by the client.</t>
@@ -1892,7 +1796,8 @@
         <t>By default, DHCP server implementations SHOULD NOT generate
         predictable addresses (see Section&nbsp;4.7 of <xref target="RFC7721"/>). Server
         implementers are encouraged to review <xref target="RFC4941"/>,
-        <xref target="RFC7824"/>, and <xref target="RFC7707"/> as to
+        <xref target="RFC7824"/>, <xref target="RFC7707"/>, and
+        <xref target="RFC7943"/> as to
         possible considerations for how to generate addresses.</t>
 
         <t>A server MUST NOT assign an address that is otherwise reserved for
@@ -1904,42 +1809,6 @@
         discussion on how servers determine a client's location on the network.</t>
       </section>
 
-      <section title="Assignment of Temporary Addresses">
-        <t>A client may request the assignment of temporary addresses (see
-        <xref target="RFC4941"/> for the definition of temporary
-        addresses). DHCP handling of address assignment is no different for
-        temporary addresses.</t>
-
-        <t>Clients ask for temporary addresses, and servers assign them.
-        Temporary addresses are carried in the IA_TA option (see <xref
-        target="RFC3315-22.5"/>). Each IA_TA option typically contains
-        at least one temporary address for each of the prefixes on the link
-        to which the client is attached.</t>
-
-        <t>The lifetime of the assigned temporary address is set in the IA
-        Address option (see <xref target="RFC3315-22.6"/>) encapsulated in the
-        IA_TA option. It is RECOMMENDED to set short lifetimes, typically
-        shorter than TEMP_VALID_LIFETIME and TEMP_PREFERRED_LIFETIME (see
-        Section&nbsp;5 of <xref target="RFC4941"/>).</t>
-
-        <t>A DHCP server implementation MAY generate temporary addresses,
-        referring to the algorithm defined in Section&nbsp;3.2.1 of <xref
-        target="RFC4941"/>, with the additional condition that any new
-        address is not the same as any assigned address.</t>
-
-        <t>The server MAY update the DNS for a temporary address, as described
-        in Section&nbsp;4 of <xref target="RFC4941"/>.</t>
-
-        <t>On the clients, by default, temporary addresses are preferred in
-        source address selection, according to Rule 7 in Section&nbsp;5 of
-        <xref target="RFC6724"/>. However, this policy can be overridden.</t>
-
-        <t>One of the most important properties of a temporary address is to
-        make it difficult to link the address to different actions over time.
-        So, it is NOT RECOMMENDED for a client to renew temporary addresses,
-        though DHCP provides for such a possibility (see <xref
-        target="RFC3315-22.5"/>).</t>
-      </section>
 
       <section title="Assignment of Prefixes for IA_PD">
         <t>The mechanism through which the server selects
@@ -1970,9 +1839,6 @@
       the client's message. (All servers will receive this message, but only
       the indicated server will respond.) All servers are indicated when
       this option is not supplied.</t>
-
-      <t>A client may send some messages directly to a server using unicast,
-      as described in <xref target="RFC3315-22.12"/>.</t>
 
       <section anchor="rate-limit" title="Rate Limiting">
         <t>In order to avoid prolonged message bursts that may be caused by
@@ -2009,11 +1875,8 @@
       <list style="numbers">
         <t>a client received an IA_NA option (see <xref target="RFC3315-22.4"/>) with a zero value</t>
         <t>a client received an IA_PD option (see <xref target="IA_PD-option"/>) with a zero value</t>
-        <t>a client received an IA_TA option (see <xref
-        target="RFC3315-22.5"/>) (which does not contain T1 and T2 fields and
-        these leases are not generally renewed)</t>
-
       </list>
+
         This is an indication that the renew and rebind times are left to
         the discretion of the client. However, they are not completely
         discretionary.</t>
@@ -2171,9 +2034,11 @@
       enterprise-number values). These should be ignored as if they were not
       present.  This is critical to provide for future extensions of DHCP.</t>
 
-      <t>A server MUST discard any Solicit, Confirm, Rebind, or
-      Information&nbhy;request messages it receives with a Layer 3 unicast
-      destination address.</t>
+      <t>A server MUST discard any Solicit, Confirm, or Rebind messages
+      it receives with a Layer 3 unicast
+      destination address. A server SHOULD discard other client messages it
+      receives with a Layer 3 unicast destination address - see
+      <xref target="use-multicast"/>.</t>
 
       <t>A client or server MUST discard any received DHCP messages
       with an unknown message type.</t>
@@ -2420,13 +2285,6 @@
         link attachment or the client is certain that two interfaces are
         attached to the same link.</t>
 
-        <t>When a client sends a DHCP message directly to a server using
-        unicast (after receiving the Server Unicast option 
-        (see <xref target="RFC3315-22.12"/>) from that server),
-        the source address in the header of the IPv6 datagram MUST be an
-        address assigned to the interface for which the client is interested
-        in obtaining configuration and that is suitable for use by the server
-        in responding to the client.</t>
       </section>
 
       <section title="Source Address and Interface Selection for Prefix Delegation">
@@ -2442,12 +2300,6 @@
         applies even in the case where a separate IA_PD is used for each
         downstream interface.</t>
 
-        <t>When a client sends a DHCP message directly to a
-        server using unicast (after receiving the Server Unicast
-        option (see <xref target="RFC3315-22.12"/>) from that server), the
-        source address SHOULD be an address that is from the upstream
-        interface and that is suitable for use by the server in
-        responding to the client.</t>
       </section>
     </section>
 
@@ -2664,21 +2516,6 @@
         and/or other configuration information to the client in a Reply
         message.</t>
 
-        <t>If the client has a source address of sufficient scope that can be
-        used by the server as a return address and the client has received a
-        Server Unicast option (see <xref target="RFC3315-22.12"/>) from the
-        server, the client SHOULD unicast any Request, Renew, Release, and
-        Decline messages to the server.</t>
-
-
-        <t>Use of unicast may avoid delays due to the relaying of messages
-            by relay agents, as well as avoid overhead on servers due to
-            the delivery of client messages to multiple
-            servers. However, requiring the client to relay all DHCP messages
-            through a relay agent enables the inclusion of relay agent options
-            in all messages sent by the client. The server should enable the
-            use of unicast only when relay agent options will not be used.</t>
-
         <section anchor="solicit-create-transmit"
                  title="Creation and Transmission of Solicit Messages">
 
@@ -2696,17 +2533,15 @@
           been trying to complete the current DHCP message exchange.</t>
 
           <t>The client uses IA_NA options (see <xref target="RFC3315-22.4"/>)
-          to request the assignment of non-temporary addresses, IA_TA options
-          (see <xref target="RFC3315-22.5"/>) to request the assignment of
-          temporary addresses, and IA_PD options (see
+          to request the assignment of non-temporary addresses and IA_PD options (see
           <xref target="IA_PD-option"/>) to request prefix delegation.
-          IA_NA, IA_TA, or IA_PD options, or a combination of all, can
+          IA_NA or IA_PD options, or a combination, can
           be included in DHCP messages. In addition, multiple instances of any
           IA option type can be included.</t>
 
           <t>The client MAY include addresses in IA Address options (see
           <xref target="RFC3315-22.6"/>) encapsulated
-          within IA_NA and IA_TA options as hints to the server about the
+          within IA_NA optiona as hints to the server about the
           addresses for which the client has a preference.</t>
 
           <t>The client MAY include values in IA Prefix options (see
@@ -2949,8 +2784,7 @@
           the leases were obtained; the Renew message includes IA options for
           the IAs whose lease lifetimes are to be extended. The client
           includes IA Address options (see <xref target="RFC3315-22.6"/>)
-          within IA_NA (see <xref target="RFC3315-22.4"/>) and IA_TA
-          (see <xref target="RFC3315-22.5"/>) options for the addresses
+          within IA_NA (see <xref target="RFC3315-22.4"/>) options for the addresses
           assigned to the IAs. The client includes IA Prefix options
           (see <xref target="IAPREFIX-option"/>) within IA_PD options
           (see <xref target="IA_PD-option"/>) for the delegated prefixes
@@ -2974,7 +2808,7 @@
           to receive Reconfigure messages.</t>
 
           <t>If T1 or T2 had been set to 0 by the server (for an IA_NA or
-          IA_PD) or there are no T1 or T2 times (for an IA_TA) in a previous
+          IA_PD) in a previous
           Reply, the client may, at its discretion, send a Renew or Rebind
           message, respectively. The client MUST follow the rules defined
           in <xref target="t1-t2-0"/>.</t>
@@ -3329,8 +3163,7 @@
 
           <t>The client MUST ignore any Advertise message that contains
           no addresses (IA Address options (see <xref target="RFC3315-22.6"/>)
-          encapsulated in IA_NA options (see <xref target="RFC3315-22.4"/>) or
-          IA_TA options (see <xref target="RFC3315-22.5"/>)) and
+          encapsulated in IA_NA options (see <xref target="RFC3315-22.4"/>)) and
           no delegated prefixes (IA Prefix options
           (see <xref target="IAPREFIX-option"/>) encapsulated in IA_PD
           options (see <xref target="IA_PD-option"/>)), with the exception
@@ -3479,8 +3312,9 @@
                 <xref target="RFC4861"/>), in order to avoid the
                 problems described in <xref target="RFC4943"/>, the client
                 MUST NOT assume that any addresses are reachable on-link as a
-                result of receiving an IA_NA or IA_TA. Addresses obtained from
-                an IA_NA or IA_TA MUST NOT be used to form an implicit prefix
+                result of receiving an IA Address option (see
+                <xref target="RFC3315-22.6"/>). Addresses obtained from
+                an IA Address option MUST NOT be used to form an implicit prefix
                 with a length other than 128.</t>
 
                 <t>For each delegated prefix, the client assigns a
@@ -3662,7 +3496,7 @@
           initiate a Rebind/Reply message exchange as described in <xref
           target="RFC3315-18.1.4"/>, with the exception that the
           retransmission parameters should be set as for the Confirm message
-          (see <xref target="RFC3315-18.1.2"/>). The client includes IA_NAs, IA_TAs, and IA_PDs,
+          (see <xref target="RFC3315-18.1.2"/>). The client includes IA_NAs and IA_PDs,
           along with the associated leases, in its Rebind message.</t>
     
           <t>If the client has only obtained network information using Information-request/Reply
@@ -3674,9 +3508,9 @@
           <xref target="RFC3315-18.1.3"/> or an Information-request/Reply exchange as
           described in <xref target="RFC3315-18.1.5"/> if the client detects a
           significant change regarding the prefixes
-          available on the link (when new prefixes are added or existing prefixes are deprecated), as this
-          may indicate a configuration change.  However, a client MUST
- rate&nbhy;limit such
+          available on the link (when new prefixes are added or existing prefixes
+          are deprecated), as this may indicate a configuration change.  However,
+          a client MUST rate&nbhy;limit such
           attempts to avoid flooding a server with requests when there are link issues 
           (for example, only doing one of these at most every 30&nbsp;seconds).</t>
 
@@ -3752,12 +3586,6 @@
 
         <section anchor="RFC3315-17.2.1" title="Receipt of Solicit Messages">
 
-          <t>See <xref target="use-multicast"/> for details regarding the
-          handling of Solicit messages received via unicast. Unicast
-          transmission of Solicit messages is not allowed, regardless of
-          whether the Server Unicast option (see <xref
-          target="RFC3315-22.12"/>) is configured or not.</t>
-
           <t>The server determines the information about the client and its
           location as described in <xref target="RFC3315-11"/> and
           checks its administrative policy about responding to the client. If
@@ -3811,9 +3639,6 @@
 
         <section anchor="RFC3315-18.2.1" title="Receipt of Request Messages">
 
-          <t>See <xref target="use-multicast"/> for details regarding the
-          handling of Request messages received via unicast.</t>
-
           <t>When the server receives a valid Request message, the server
           creates the bindings for that client according to the server's
           policy and configuration information and records the IAs and other
@@ -3832,8 +3657,7 @@
 
           <t>The server examines all IAs in the message from the client.</t>
 
-          <t>For each IA_NA option (see <xref target="RFC3315-22.4"/>) and
-          IA_TA option (see <xref target="RFC3315-22.5"/>) in the Request
+          <t>For each IA_NA option (see <xref target="RFC3315-22.4"/>) in the Request
           message, the server checks if the prefixes of included addresses are appropriate for
           the link to which the client is connected. If any of the prefixes of
           the included addresses are not appropriate for the link to which
@@ -3856,8 +3680,8 @@
           message.</t>
 
           <t>For all IAs to which the server can assign addresses or delegated
-          prefixes, the server includes the IAs with addresses (for IA_NAs and
-          IA_TAs), prefixes (for IA_PDs), and other configuration parameters
+          prefixes, the server includes the IAs with addresses (for IA_NAs),
+          prefixes (for IA_PDs), and other configuration parameters
           and records the IA as a new client binding. The server MUST NOT
           include any addresses or delegated prefixes in the IA that the
           server does not assign to the client.</t>
@@ -3913,12 +3737,6 @@
 
         <section title="Receipt of Confirm Messages" anchor="RFC3315-18.2.2">
 
-          <t>See <xref target="use-multicast"/> for details regarding the
-          handling of Confirm messages received via unicast. Unicast
-          transmission of Confirm messages is not allowed, regardless of
-          whether the Server Unicast option (see <xref
-          target="RFC3315-22.12"/>) is configured or not.</t>
-
           <t>When the server receives a Confirm message, the server determines
           whether the addresses in the Confirm message are appropriate for the
           link to which the client is attached. If all of the addresses in the
@@ -3949,9 +3767,6 @@
         </section>
 
         <section anchor="RFC3315-18.2.3" title="Receipt of Renew Messages">
-
-          <t>See <xref target="use-multicast"/> for details regarding the
-          handling of Renew messages received via unicast.</t>
 
           <t>For each IA in the Renew message from a client, the server
           locates the client's binding and verifies that the information in
@@ -4049,12 +3864,6 @@
 
         <section anchor="RFC3315-18.2.4" title="Receipt of Rebind Messages">
 
-          <t>See <xref target="use-multicast"/> for details regarding the
-          handling of Rebind messages received via unicast. Unicast
-          transmission of Rebind messages is not allowed, regardless of
-          whether the Server Unicast option (see <xref
-          target="RFC3315-22.12"/>) is configured or not.</t>
-
           <t>When the server receives a Rebind message that contains an IA
           option from a client, it locates the client's binding and verifies
           that the information in the IA from the client matches the
@@ -4081,7 +3890,7 @@
           of 0.</t>
 
           <t>If the server cannot find a client entry for the IA, the server
-          checks if the IA contains addresses (for IA_NAs and IA_TAs) or
+          checks if the IA contains addresses (for IA_NAs) or
           delegated prefixes (for IA_PDs). The server checks if the addresses
           and delegated prefixes are appropriate for the link to which the
           client's interface is attached according to the server's explicit
@@ -4167,10 +3976,6 @@
         <section anchor="RFC3315-18.2.5"
                  title="Receipt of Information-request Messages">
 
-          <t>See <xref target="use-multicast"/> for details regarding the
-          handling of Information&nbhy;request messages received via
-          unicast.</t>
-
           <t>When the server receives an Information-request message, the
           client is requesting configuration information that does not include
           the assignment of any leases. The server determines all
@@ -4204,9 +4009,6 @@
 
         <section title="Receipt of Release Messages">
 
-          <t>See <xref target="use-multicast"/> for details regarding the
-          handling of Release messages received via unicast.</t>
-
           <t>The server constructs a Reply message by setting the "msg-type"
           field to REPLY and copying the transaction ID from the Release
           message into the "transaction&nbhy;id" field.</t>
@@ -4237,9 +4039,6 @@
 
         <section title="Receipt of Decline Messages">
 
-          <t>See <xref target="use-multicast"/> for details regarding the
-          handling of Decline messages received via unicast.</t>
-
           <t>Upon the receipt of a valid Decline message, the server examines
           the IAs and the addresses in the IAs for validity. If the IAs in the
           message are in a binding for the client and the addresses in the
@@ -4259,7 +4058,7 @@
           <t>After all the addresses have been processed, the server generates
           a Reply message by setting the "msg-type" field to REPLY and
           copying the transaction ID from the Decline message into the
-          "transaction&nbhy;id" field. The client includes a Status Code option
+          "transaction&nbhy;id" field. The server includes a Status Code option
           (see <xref target="RFC3315-22.13"/>) with
           the value Success, a Server Identifier option
           (see <xref target="RFC3315-22.3"/>) with the server's
@@ -4329,7 +4128,7 @@
           message, the server MUST NOT include this address or delegated
           prefix in the Advertise message.</t>
 
-          <t>If the server will not assign any addresses to an IA_NA or IA_TA
+          <t>If the server will not assign any addresses to an IA_NA
           in subsequent Request messages from the client, the server MUST
           include the IA option in the Advertise message with no addresses in that IA
           and a Status Code option (see <xref target="RFC3315-22.13"/>)
@@ -4436,23 +4235,15 @@
 
       <section anchor="use-multicast" title="Reception of Unicast Messages">
 
-        <t>Unless otherwise stated in the subsections of
-        <xref target="RFC3315-18.2"/> that discuss the receipt of
-        specific messages, the server is not supposed to accept
-        unicast traffic when it is not explicitly configured to do
-        so.  For example, unicast transmission is not allowed for
-        Solicit, Confirm, and Rebind messages
-        (see Sections&nbsp;<xref target="RFC3315-17.2.1" format="counter"/>,
-        <xref target="RFC3315-18.2.2" format="counter"/>, and
-        <xref target="RFC3315-18.2.4" format="counter"/>, respectively), 
-        even if the Server Unicast option (see <xref target="RFC3315-22.12"/>)
-        is configured. For Request, Renew, Information&nbhy;request, Release,
-        and Decline messages, it is allowed only if the Server Unicast
-        option is configured.</t>
+        <t>The server is not supposed to accept unicast traffic from a
+        client. The Server Unicast option (see <xref target="RFC3315-22.12"/>)
+        has been deprecated and hence clients should no longer send the
+        server unicast messages. However, a server that may have supported
+        the Server Unicast option and is upgraded to not support it, may receive a
+        unicast message if it previously sent the client the Server Unicast
+        Option.</t>
 
-        <t>When the server receives a message via unicast from a client
-        to which the server has not sent a Server Unicast option (or is not
-        currently configured to do so),
+        <t>When the server receives a message via unicast from a client,
         the server discards that message and responds with an Advertise
         (when responding to a Solicit message) or Reply message (when
         responding to any other messages) containing a Status Code option
@@ -4710,10 +4501,6 @@
       IPsec and (2)&nbsp;protection against misconfiguration of a client
       caused by a Reconfigure message sent by a malicious DHCP server.</t>
 
-      <t>The delayed authentication protocol, defined in
-      <xref target="RFC3315"/>, has been obsoleted by this document
-      (see <xref target="obsolete"/>).</t>
-
       <section anchor="RFC3315-21.1"
                title="Security of Messages Sent between Servers and Relay Agents">
 
@@ -4915,8 +4702,8 @@
 
       <t>Options that are allowed to appear only once are called "singleton
       options". The only non-singleton options defined in this document are
-      the IA_NA (see <xref target="RFC3315-22.4"/>), IA_TA (see <xref
-      target="RFC3315-22.5"/>), Vendor Class (see <xref target="RFC3315-22.16"/>),
+      the IA_NA (see <xref target="RFC3315-22.4"/>),
+      Vendor Class (see <xref target="RFC3315-22.16"/>),
       Vendor-specific Information (see <xref target="RFC3315-22.17"/>),
       and IA_PD (see <xref
       target="IA_PD-option"/>) options. Also, IA Address (see <xref
@@ -5069,7 +4856,7 @@
             <t hangText="   IAID">The unique identifier for this IA_NA; the
             IAID must be unique among the identifiers for all of this client's
             IA_NAs. The number space for IA_NA IAIDs is separate from the
-            number space for other IA option types (i.e., IA_TA and IA_PD).
+            number space for other IA option types (i.e., IA_PD).
             A 4&nbhy;octet field containing an unsigned integer.</t>
 
             <t hangText="   T1">The time interval after which the client should contact the
@@ -5149,99 +4936,16 @@
                title="Identity Association for Temporary Addresses Option">
 
         <t>The Identity Association for Temporary Addresses (IA_TA) option
-        is used to carry an IA_TA, the parameters associated with the IA_TA,
-        and the addresses associated with the IA_TA. All of the addresses in
-        this option are used by the client as temporary addresses, as defined
-        in <xref target="RFC4941"/>. The format of the IA_TA option
-        is:</t>
-
-        <figure align="center" anchor="FigOption4"
-                title="Identity Association for Temporary Addresses Option Format">
-          <artwork align="left">
-    <![CDATA[0                   1                   2                   3
-    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
-   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-   |          OPTION_IA_TA         |          option-len           |
-   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-   |                        IAID (4 octets)                        |
-   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-   |                                                               |
-   .                         IA_TA-options                         .
-   .                                                               .
-   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-          ]]></artwork>
-        </figure>
-
-        <t><list hangIndent="24" style="hanging">
-            <t hangText="   option-code">OPTION_IA_TA (4).</t>
-
-            <t hangText="   option-len">4 + length of IA_TA-options field.</t>
-
-            <t hangText="   IAID">The unique identifier for this IA_TA; the
-            IAID must be unique among the identifiers for all of this client's
-            IA_TAs. The number space for IA_TA IAIDs is separate from the
-            number space for other IA option types (i.e., IA_NA and IA_PD).
-            A 4&nbhy;octet field containing an unsigned integer.</t>
-
-            <t hangText="   IA_TA-options">Options associated with this
-            IA_TA. A variable-length field (4 octets less than the
-            value in the option-len field).</t>
-          </list></t>
-
-        <t>The IA_TA-options field encapsulates those options that are
-        specific to this IA_TA. For example, all of the IA Address options
-        (see <xref target="RFC3315-22.6"/>)
-        carrying the addresses associated with this IA_TA are in the
-        IA_TA-options field.</t>
-
-        <t>Each IA_TA carries one "set" of temporary addresses. It is
-        up to the server policy to determine how many addresses are
-        assigned.</t>
-
-        <t>An IA_TA option may only appear in the options area of a DHCP
-        message. A DHCP message may contain multiple IA_TA options (though
-        each must have a unique IAID).</t>
-
-        <t>The status of any operations involving this IA_TA is indicated in a
-        Status Code option (see <xref target="RFC3315-22.13"/>)
-        in the IA_TA-options field.</t>
-
-        <t>Note that an IA has no explicit "lifetime" or "lease length" of its
-        own. When the valid lifetimes of all of the addresses in an IA_TA have
-        expired, the IA can be considered as having expired.</t>
-
-        <t>An IA_TA option does not include values for T1 and T2. A client MAY
-        request that the valid lifetime on temporary addresses be extended by
-        including the addresses in an IA_TA option sent in a Renew or Rebind
-        message to a server. For example, a client would request an extension
-        on the valid lifetime of a temporary address to allow an application to
-        continue to use an established TCP connection. Extending only the
-        valid, but not the preferred, lifetime means the address will end up
-        in a deprecated state eventually. Existing connections could continue,
-        but no new ones would be created using that address.</t>
-
-        <t>The client obtains new temporary addresses by sending an IA_TA
-        option with a new IAID to a server. Requesting new temporary addresses
-        from the server is the equivalent of generating new temporary
-        addresses as described in <xref target="RFC4941"/>. The server
-        will generate new temporary addresses and return them to the client.
-        The client should request new temporary addresses before the lifetimes
-        on the previously assigned addresses expire.</t>
-
-        <t>A server MUST return the same set of temporary addresses for the
-        same IA_TA (as identified by the IAID) as long as those addresses are
-        still valid. After the lifetimes of the addresses in an IA_TA have
-        expired, the IAID may be reused to identify a new IA_TA with new
-        temporary addresses.</t>
+        is deprecated. Please refer to <xref target="RFC8415"/> for more
+        information on this option.</t>
       </section>
 
       <section anchor="RFC3315-22.6" title="IA Address Option">
 
         <t>The IA Address option is used to specify an address associated
-        with an IA_NA or an IA_TA. The IA Address option must be encapsulated
+        with an IA_NA. The IA Address option must be encapsulated
         in the IA_NA&nbhy;options field of an IA_NA option
-        (see <xref target="RFC3315-22.4"/>) or the IA_TA&nbhy;options field
-        of an IA_TA option (see <xref target="RFC3315-22.5"/>).
+        (see <xref target="RFC3315-22.4"/>).
         The IAaddr&nbhy;options field encapsulates those options that are
         specific to this address.</t>
 
@@ -5313,8 +5017,7 @@
         address is 0xffffffff, it is taken to mean "infinity" and should be
         used carefully.</t>
 
-        <t>More than one IA Address option can appear in an IA_NA option or an
-        IA_TA option.</t>
+        <t>More than one IA Address option can appear in an IA_NA option.</t>
 
         <t>The status of any operations involving this IA Address is indicated
         in a Status Code option in the IAaddr-options field, as specified in
@@ -5357,7 +5060,7 @@
         inform the server about options the client wants the server to send to
         the client. For certain message types, some option codes MUST be
         included in the Option Request option; see
-        <xref target="option_update_table"/> for details.</t>
+        <xref target="IANA-OPTION-DETAILS"/> for details.</t>
 
         <t>The Option Request option MUST NOT include the
         following options:</t>
@@ -5366,7 +5069,7 @@
         <t>Client Identifier (see <xref target="RFC3315-22.2"/>)</t>
         <t>Server Identifier (see <xref target="RFC3315-22.3"/>)</t>
         <t>IA_NA (see <xref target="RFC3315-22.4"/>)</t>
-        <t>IA_TA (see <xref target="RFC3315-22.5"/>)</t>
+        <t>IA_TA (option deprecated, see <xref target="RFC3315-22.5"/>)</t>
         <t>IA_PD (see <xref target="IA_PD-option"/>)</t>
         <t>IA Address (see <xref target="RFC3315-22.6"/>)</t>
         <t>IA Prefix (see <xref target="IAPREFIX-option"/>)</t>
@@ -5375,7 +5078,7 @@
         <t>Preference (see <xref target="RFC3315-22.8"/>)</t>
         <t>Relay Message (see <xref target="RFC3315-22.10"/>)</t>
         <t>Authentication (see <xref target="RFC3315-22.11"/>)</t>
-        <t>Server Unicast (see <xref target="RFC3315-22.12"/>)</t>
+        <t>Server Unicast (option deprecated, see <xref target="RFC3315-22.12"/>)</t>
         <t>Status Code (see <xref target="RFC3315-22.13"/>)</t>
         <t>Rapid Commit (see <xref target="RFC3315-22.14"/>)</t>
         <t>User Class (see <xref target="RFC3315-22.15"/>)</t>
@@ -5396,7 +5099,7 @@
         example, the Option Request option MAY be used to signal support for a
         feature even when that option is encapsulated, as in the case of the
         Prefix Exclude option <xref target="RFC6603"/>. See <xref
-        target="option_update_table"/>.
+        target="IANA-OPTION-DETAILS"/>.
         </t>
 
       </section>
@@ -5521,8 +5224,8 @@
         authenticate the identity and contents of DHCP messages. The use of
         the Authentication option is described in <xref
         target="RFC3315-21"/>. The delayed authentication protocol,
-        defined in <xref target="RFC3315"/>, has been obsoleted by this
-        document, due to lack of usage (see <xref target="obsolete"/>).
+        defined in <xref target="RFC3315"/>, was obsoleted by
+        <xref target="RFC8415"/>.
         The format of the Authentication option is:</t>
 
         <figure align="center" anchor="FigOption11"
@@ -5575,53 +5278,8 @@
 
       <section anchor="RFC3315-22.12" title="Server Unicast Option">
 
-        <t>The server sends this option to a client to indicate to the client
-        that it is allowed to unicast messages to the server. The format of
-        the Server Unicast option is:</t>
-
-        <figure align="center" anchor="FigOption12"
-                title="Server Unicast Option Format">
-          <artwork align="left">
-    <![CDATA[0                   1                   2                   3
-    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
-   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-   |          OPTION_UNICAST       |        option-len             |
-   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-   |                                                               |
-   |                       server-address                          |
-   |                                                               |
-   |                                                               |
-   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-          ]]></artwork>
-        </figure>
-
-        <t><list hangIndent="24" style="hanging">
-            <t hangText="   option-code">OPTION_UNICAST (12).</t>
-
-            <t hangText="   option-len">16.</t>
-
-            <t hangText="   server-address">The 128-bit address to
-            which the client should send messages delivered using
-            unicast.</t>
-          </list></t>
-
-        <t>The server specifies in the server-address field the address
-        to which the client is to send unicast messages. When a client
-        receives this option, where permissible and appropriate the client
-        sends messages directly to the server using the address specified
-        in the server&nbhy;address field of the option.</t>
-
-        <t>When the server sends a Server Unicast option to the client,
-        some messages from the client will not be relayed by relay agents and
-        will not include relay agent options from the relay agents. Therefore,
-        a server should only send a Server Unicast option to a client when
-        relay agents are not sending relay agent options. A DHCP server
-        rejects any messages sent inappropriately using unicast to ensure that
-        messages are relayed by relay agents when relay agent options are
-        in&nbsp;use.</t>
-
-        <t>Details about when the client may send messages to the server using
-        unicast are provided in <xref target="configuration-exchange"/>.</t>
+        <t>The Server Unicast option is deprecated. Please refer to
+         <xref target="RFC8415"/> for more information on this option.</t>
       </section>
 
       <section anchor="RFC3315-22.13" title="Status Code Option">
@@ -6189,7 +5847,7 @@
             <t hangText="   IAID">The unique identifier for this IA_PD; the
             IAID must be unique among the identifiers for all of this
             client's IA_PDs. The number space for IA_PD IAIDs is separate from
-            the number space for other IA option types (i.e., IA_NA and IA_TA).
+            the number space for other IA option types (i.e., IA_NA).
             A 4&nbhy;octet field containing an unsigned integer.</t>
 
             <t hangText="   T1">The time interval after which the client should
@@ -6695,7 +6353,7 @@
       disallowing direct client-to-client communication on these networks or
       using <xref target="RFC7610"/> and <xref target="RFC7513"/>.</t>
            
-           </list></t>
+      </list></t>
 
     </section>
 
@@ -6737,251 +6395,16 @@
       <t>The list of assigned values used in DHCPv6 is available at
       &lt;https://www.iana.org/assignments/dhcpv6-parameters&gt;.</t>
 
-      <t>IANA has updated
-      &lt;https://www.iana.org/assignments/dhcpv6-parameters&gt;
-      to add a reference to this document for definitions previously
-      created by <xref target="RFC3315"/>, <xref target="RFC3633"/>,
-      <xref target="RFC4242"/>, and <xref target="RFC7083"/>.</t>
-         
-      <t>IANA has added two columns to the DHCPv6 "Option Codes" registry at
-      &lt;https://www.iana.org/assignments/dhcpv6-parameters&gt;
-      to indicate which options are allowed to appear in a client's Option
-      Request option
-      (see <xref target="RFC3315-22.7"/>) and which options are singleton
-      options (only allowed to appear once as a top-level or encapsulated
-      option; see Section&nbsp;16 of <xref target="RFC7227"/>).
-      <xref target="option_update_table"/> provides the data for the options
-      assigned by IANA at the time of writing this document.</t>
+      <t>IANA is requested
+      to update all references to <xref target="RFC8415"/> to this
+      document at
+      &lt;https://www.iana.org/assignments/dhcpv6-parameters&gt;.</t>
 
-<texttable anchor="option_update_table" title="Updated Options">
-<ttcol align='right' width="15%">Option</ttcol>
-<ttcol align='left' width="35%">Option Name ("OPTION" prefix removed)</ttcol>
-<ttcol align='left' width="35%">Client ORO (1)</ttcol>
-<ttcol align='left' width="15%">Singleton Option</ttcol>
-<c>1</c><c>CLIENTID</c><c>No</c><c>Yes</c>
-<c>2</c><c>SERVERID</c><c>No</c><c>Yes</c>
-<c>3</c><c>IA_NA</c><c>No</c><c>No</c>
-<c>4</c><c>IA_TA</c><c>No</c><c>No</c>
-<c>5</c><c>IAADDR</c><c>No</c><c>No</c>
-<c>6</c><c>ORO</c><c>No</c><c>Yes</c>
-<c>7</c><c>PREFERENCE</c><c>No</c><c>Yes</c>
-<c>8</c><c>ELAPSED_TIME</c><c>No</c><c>Yes</c>
-<c>9</c><c>RELAY_MSG</c><c>No</c><c>Yes</c>
-<c>11</c><c>AUTH</c><c>No</c><c>Yes</c>
-<c>12</c><c>UNICAST</c><c>No</c><c>Yes</c>
-<c>13</c><c>STATUS_CODE</c><c>No</c><c>Yes</c>
-<c>14</c><c>RAPID_COMMIT</c><c>No</c><c>Yes</c>
-<c>15</c><c>USER_CLASS</c><c>No</c><c>Yes</c>
-<c>16</c><c>VENDOR_CLASS</c><c>No</c><c>No (2)</c>
-<c>17</c><c>VENDOR_OPTS</c><c>Optional</c><c>No (2)</c>
-<c>18</c><c>INTERFACE_ID</c><c>No</c><c>Yes</c>
-<c>19</c><c>RECONF_MSG</c><c>No</c><c>Yes</c>
-<c>20</c><c>RECONF_ACCEPT</c><c>No</c><c>Yes</c>
-<c>21</c><c>SIP_SERVER_D</c><c>Yes</c><c>Yes</c>
-<c>22</c><c>SIP_SERVER_A</c><c>Yes</c><c>Yes</c>
-<c>23</c><c>DNS_SERVERS</c><c>Yes</c><c>Yes</c>
-<c>24</c><c>DOMAIN_LIST</c><c>Yes</c><c>Yes</c>
-<c>25</c><c>IA_PD</c><c>No</c><c>No</c>
-<c>26</c><c>IAPREFIX</c><c>No</c><c>No</c>
-<c>27</c><c>NIS_SERVERS</c><c>Yes</c><c>Yes</c>
-<c>28</c><c>NISP_SERVERS</c><c>Yes</c><c>Yes</c>
-<c>29</c><c>NIS_DOMAIN_NAME</c><c>Yes</c><c>Yes</c>
-<c>30</c><c>NISP_DOMAIN_NAME</c><c>Yes</c><c>Yes</c>
-<c>31</c><c>SNTP_SERVERS</c><c>Yes</c><c>Yes</c>
-<c>32</c><c>INFORMATION_REFRESH_TIME</c><c>Required for Information- request</c><c>Yes</c>
-<c>33</c><c>BCMCS_SERVER_D</c><c>Yes</c><c>Yes</c>
-<c>34</c><c>BCMCS_SERVER_A</c><c>Yes</c><c>Yes</c>
-<c>36</c><c>GEOCONF_CIVIC</c><c>Yes</c><c>Yes</c>
-<c>37</c><c>REMOTE_ID</c><c>No</c><c>Yes</c>
-<c>38</c><c>SUBSCRIBER_ID</c><c>No</c><c>Yes</c>
-<c>39</c><c>CLIENT_FQDN</c><c>Yes</c><c>Yes</c>
-<c>40</c><c>PANA_AGENT</c><c>Yes</c><c>Yes</c>
-<c>41</c><c>NEW_POSIX_TIMEZONE</c><c>Yes</c><c>Yes</c>
-<c>42</c><c>NEW_TZDB_TIMEZONE</c><c>Yes</c><c>Yes</c>
-<c>43</c><c>ERO</c><c>No</c><c>Yes</c>
-<c>44</c><c>LQ_QUERY</c><c>No</c><c>Yes</c>
-<c>45</c><c>CLIENT_DATA</c><c>No</c><c>Yes</c>
-<c>46</c><c>CLT_TIME</c><c>No</c><c>Yes</c>
-<c>47</c><c>LQ_RELAY_DATA</c><c>No</c><c>Yes</c>
-<c>48</c><c>LQ_CLIENT_LINK</c><c>No</c><c>Yes</c>
-<c>49</c><c>MIP6_HNIDF</c><c>Yes</c><c>Yes</c>
-<c>50</c><c>MIP6_VDINF</c><c>Yes</c><c>Yes</c>
-<c>51</c><c>V6_LOST</c><c>Yes</c><c>Yes</c>
-<c>52</c><c>CAPWAP_AC_V6</c><c>Yes</c><c>Yes</c>
-<c>53</c><c>RELAY_ID</c><c>No</c><c>Yes</c>
-<c>54</c><c>IPv6_Address-MoS</c><c>Yes</c><c>Yes</c>
-<c>55</c><c>IPv6_FQDN-MoS</c><c>Yes</c><c>Yes</c>
-<c>56</c><c>NTP_SERVER</c><c>Yes</c><c>Yes</c>
-<c>57</c><c>V6_ACCESS_DOMAIN</c><c>Yes</c><c>Yes</c>
-<c>58</c><c>SIP_UA_CS_LIST</c><c>Yes</c><c>Yes</c>
-<c>59</c><c>OPT_BOOTFILE_URL</c><c>Yes</c><c>Yes</c>
-<c>60</c><c>OPT_BOOTFILE_PARAM</c><c>Yes</c><c>Yes</c>
-<c>61</c><c>CLIENT_ARCH_TYPE</c><c>No</c><c>Yes</c>
-<c>62</c><c>NII</c><c>Yes</c><c>Yes</c>
-<c>63</c><c>GEOLOCATION</c><c>Yes</c><c>Yes</c>
-<c>64</c><c>AFTR_NAME</c><c>Yes</c><c>Yes</c>
-<c>65</c><c>ERP_LOCAL_DOMAIN_NAME</c><c>Yes</c><c>Yes</c>
-<c>66</c><c>RSOO</c><c>No</c><c>Yes</c>
-<c>67</c><c>PD_EXCLUDE</c><c>Yes</c><c>Yes</c>
-<c>68</c><c>VSS</c><c>No</c><c>Yes</c>
-<c>69</c><c>MIP6_IDINF</c><c>Yes</c><c>Yes</c>
-<c>70</c><c>MIP6_UDINF</c><c>Yes</c><c>Yes</c>
-<c>71</c><c>MIP6_HNP</c><c>Yes</c><c>Yes</c>
-<c>72</c><c>MIP6_HAA</c><c>Yes</c><c>Yes</c>
-<c>73</c><c>MIP6_HAF</c><c>Yes</c><c>Yes</c>
-<c>74</c><c>RDNSS_SELECTION</c><c>Yes</c><c>No</c>
-<c>75</c><c>KRB_PRINCIPAL_NAME</c><c>Yes</c><c>Yes</c>
-<c>76</c><c>KRB_REALM_NAME</c><c>Yes</c><c>Yes</c>
-<c>77</c><c>KRB_DEFAULT_REALM_NAME</c><c>Yes</c><c>Yes</c>
-<c>78</c><c>KRB_KDC</c><c>Yes</c><c>Yes</c>
-<c>79</c><c>CLIENT_LINKLAYER_ADDR</c><c>No</c><c>Yes</c>
-<c>80</c><c>LINK_ADDRESS</c><c>No</c><c>Yes</c>
-<c>81</c><c>RADIUS</c><c>No</c><c>Yes</c>
-<c>82</c><c>SOL_MAX_RT</c><c>Required for Solicit</c><c>Yes</c>
-<c>83</c><c>INF_MAX_RT</c><c>Required for Information- request</c><c>Yes</c>
-<c>84</c><c>ADDRSEL</c><c>Yes</c><c>Yes</c>
-<c>85</c><c>ADDRSEL_TABLE</c><c>Yes</c><c>Yes</c>
-<c>86</c><c>V6_PCP_SERVER</c><c>Yes</c><c>No</c>
-<c>87</c><c>DHCPV4_MSG</c><c>No</c><c>Yes</c>
-<c>88</c><c>DHCP4_O_DHCP6_SERVER</c><c>Yes</c><c>Yes</c>
-<c>89</c><c>S46_RULE</c><c>No</c><c>No (3)</c>
-<c>90</c><c>S46_BR</c><c>No</c><c>No</c>
-<c>91</c><c>S46_DMR</c><c>No</c><c>Yes</c>
-<c>92</c><c>S46_V4V6BIND</c><c>No</c><c>Yes</c>
-<c>93</c><c>S46_PORTPARAMS</c><c>No</c><c>Yes</c>
-<c>94</c><c>S46_CONT_MAPE</c><c>Yes</c><c>No</c>
-<c>95</c><c>S46_CONT_MAPT</c><c>Yes</c><c>Yes</c>
-<c>96</c><c>S46_CONT_LW</c><c>Yes</c><c>Yes</c>
-<c>97</c><c>4RD</c><c>Yes</c><c>Yes</c>
-<c>98</c><c>4RD_MAP_RULE</c><c>Yes</c><c>Yes</c>
-<c>99</c><c>4RD_NON_MAP_RULE</c><c>Yes</c><c>Yes</c>
-<c>100</c><c>LQ_BASE_TIME</c><c>No</c><c>Yes</c>
-<c>101</c><c>LQ_START_TIME</c><c>No</c><c>Yes</c>
-<c>102</c><c>LQ_END_TIME</c><c>No</c><c>Yes</c>
-<c>103</c><c>DHCP Captive-Portal</c><c>Yes</c><c>Yes</c>
-<c>104</c><c>MPL_PARAMETERS</c><c>Yes</c><c>No</c>
-<c>105</c><c>ANI_ATT</c><c>No</c><c>Yes</c>
-<c>106</c><c>ANI_NETWORK_NAME</c><c>No</c><c>Yes</c>
-<c>107</c><c>ANI_AP_NAME</c><c>No</c><c>Yes</c>
-<c>108</c><c>ANI_AP_BSSID</c><c>No</c><c>Yes</c>
-<c>109</c><c>ANI_OPERATOR_ID</c><c>No</c><c>Yes</c>
-<c>110</c><c>ANI_OPERATOR_REALM</c><c>No</c><c>Yes</c>
-<c>111</c><c>S46_PRIORITY</c><c>Yes</c><c>Yes</c>
-<c>112</c><c>MUD_URL_V6</c><c>No</c><c>Yes</c>
-<c>113</c><c>V6_PREFIX64</c><c>Yes</c><c>No</c>
-<c>114</c><c>F_BINDING_STATUS</c><c>No</c><c>Yes</c>
-<c>115</c><c>F_CONNECT_FLAGS</c><c>No</c><c>Yes</c>
-<c>116</c><c>F_DNS_REMOVAL_INFO</c><c>No</c><c>Yes</c>
-<c>117</c><c>F_DNS_HOST_NAME</c><c>No</c><c>Yes</c>
-<c>118</c><c>F_DNS_ZONE_NAME</c><c>No</c><c>Yes</c>
-<c>119</c><c>F_DNS_FLAGS</c><c>No</c><c>Yes</c>
-<c>120</c><c>F_EXPIRATION_TIME</c><c>No</c><c>Yes</c>
-<c>121</c><c>F_MAX_UNACKED_BNDUPD</c><c>No</c><c>Yes</c>
-<c>122</c><c>F_MCLT</c><c>No</c><c>Yes</c>
-<c>123</c><c>F_PARTNER_LIFETIME</c><c>No</c><c>Yes</c>
-<c>124</c><c>F_PARTNER_LIFETIME_SENT</c><c>No</c><c>Yes</c>
-<c>125</c><c>F_PARTNER_DOWN_TIME</c><c>No</c><c>Yes</c>
-<c>126</c><c>F_PARTNER_RAW_CLT_TIME</c><c>No</c><c>Yes</c>
-<c>127</c><c>F_PROTOCOL_VERSION</c><c>No</c><c>Yes</c>
-<c>128</c><c>F_KEEPALIVE_TIME</c><c>No</c><c>Yes</c>
-<c>129</c><c>F_RECONFIGURE_DATA</c><c>No</c><c>Yes</c>
-<c>130</c><c>F_RELATIONSHIP_NAME</c><c>No</c><c>Yes</c>
-<c>131</c><c>F_SERVER_FLAGS</c><c>No</c><c>Yes</c>
-<c>132</c><c>F_SERVER_STATE</c><c>No</c><c>Yes</c>
-<c>133</c><c>F_START_TIME_OF_STATE</c><c>No</c><c>Yes</c>
-<c>134</c><c>F_STATE_EXPIRATION_TIME</c><c>No</c><c>Yes</c>
-<c>135</c><c>RELAY_PORT</c><c>No</c><c>Yes</c>     
-<c>143</c><c>IPv6_Address-ANDSF</c><c>Yes</c><c>Yes</c>
-</texttable>
-
-<t>Notes for <xref target="option_update_table"/>:
-<list style="format (%d)">
-    <t>In the "Client ORO" column, a "Yes" for an option means that the
-     client includes this option code in the Option Request option
-     (see <xref target="RFC3315-22.7"/>) if it desires that configuration
-     information, and a "No" means that the option MUST NOT be included
-     (and servers SHOULD silently ignore that option code if it appears in a
-     client's Option Request option).</t>
-
-    <t> For each Enterprise Number, there MUST only be a single instance.</t>
-
-    <t> See <xref target="RFC7598"/> for details.</t>
-</list></t>
-         
-      <t>IANA has corrected the range of possible status codes
-      in the "Status Codes" table at 
-      &lt;https://www.iana.org/assignments/dhcpv6-parameters&gt;
-      by replacing 23-255 (as Unassigned) with 23-65535 (the codes are
-      16-bit unsigned integers).</t>
-
-      <t>IANA has updated the All_DHCP_Relay_Agents_and_Servers
-      (ff02::1:2) and All_DHCP_Servers (ff05::1:3)
-      table entries in the "IPv6 Multicast Address Space Registry" at
-      &lt;https://www.iana.org/assignments/ipv6&nbhy;multicast-addresses&gt;
-      to reference this document instead of <xref target="RFC3315"/>.</t>
-
-      <t>IANA has added an "Obsolete" annotation in the "DHCPv6 Delayed
-      Authentication" entry in the "Authentication Suboption (value 8) -
-      Protocol identifier values" registry at
-      &lt;https://www.iana.org/assignments/bootp-dhcp-parameters&gt; and
-      has added an "Obsolete" annotation in the "Delayed Authentication"
-      entry in the "Protocol Name Space Values" registry at
-      &lt;https://www.iana.org/assignments/auth-namespaces&gt;. IANA has
-      also updated these pages to reference this document
-      instead of <xref target="RFC3315"/>.
+      <t>IANA is requested to mark the IA_TA (option code 4) and
+      UNICAST (option code 12) at
+      &lt;https://www.iana.org/assignments/dhcpv6-parameters&gt; as
+      obsolete.
       </t>
-         
-      <t>IANA has added a reference to this document for the
-      RDM value of 0 to the "RDM Name Space Values" registry at
-      &lt;https://www.iana.org/assignments/auth-namespaces&gt;.
-      </t>
-         
-      <t>IANA has updated the "Service Name and Transport
-      Protocol Port Number Registry" at
-      &lt;https://www.iana.org/assignments/service&nbhy;names&nbhy;port&nbhy;numbers&gt; as
-      follows:</t>
-
-<figure><artwork><![CDATA[
-         546/udp      This document
-         547/udp      This document
-         547/tcp      [RFC5460]
-         647/tcp      [RFC8156]
-]]></artwork></figure>
-    </section>
-
-    <section anchor="obsolete" title="Obsoleted Mechanisms">
-      <t>This specification is mostly a corrected and cleaned-up version
-      of the original specification -- <xref target="RFC3315"/> -- along with
-      numerous additions from later RFCs. However, there are a small number of
-      mechanisms that were not widely deployed, were underspecified, or
-      had other operational issues. Those mechanisms are now
-      considered deprecated. Legacy implementations MAY support them, but
-      implementations conformant to this document MUST NOT rely on them.</t>
-
-      <t>The following mechanisms are now obsolete:</t>
-
-      <t><list style="hanging">
-      <t hangText="Delayed authentication.">
-      This mechanism was underspecified and 
-      presented a significant operational burden. As a result, after
-      10&nbsp;years its adoption was extremely limited at best.</t>
-
-      <t hangText="Lifetime hints sent by a client.">
-      Clients used to be allowed to send
-      lifetime values as hints. This mechanism was not widely implemented, and
-      there were known misimplementations that sent the remaining lifetimes
-      rather than total desired lifetimes. That in turn was sometimes
-      misunderstood by servers as a request for ever&nbhy;decreasing lease
-      lifetimes, which caused issues when values started approaching zero.
-      Clients now SHOULD set lifetimes to 0 in IA Address and IA Prefix
-      options, and servers MUST ignore any requested lifetime value.</t>
-
-      <t hangText="T1/T2 hints sent by a client.">
-      These had issues similar to those for the lifetime hints.
-      Clients now SHOULD set the T1/T2 values to 0 in IA_NA and
-      IA_PD options, and servers MUST ignore any T1/T2 values
-      supplied by a client.</t>
-    </list></t>
 
     </section>
 
@@ -7004,6 +6427,7 @@
       <?rfc include='reference.RFC.8174'?>
       <?rfc include='reference.RFC.8200'?>
       <?rfc include='reference.RFC.8213'?>
+      <?rfc include='reference.RFC.8415'?>
 
     </references>
 
@@ -7039,6 +6463,17 @@
         </front>
       </reference>
 
+      <reference anchor="IANA-OPTION-DETAILS" target="https://www.iana.org/assignments/dhcpv6-parameters">
+        <front>
+          <title>Option Codes</title>
+          <author>
+            <organization>IANA</organization>
+          </author>
+          <date />
+        </front>
+      </reference>
+
+
       <?rfc include='reference.RFC.0826'?>
 
       <?rfc include='reference.RFC.2131'?>
@@ -7065,12 +6500,10 @@
 
       <?rfc include='reference.RFC.5007'?>
       <?rfc include='reference.RFC.5453'?>
-      <?rfc include='reference.RFC.5460'?>
       <?rfc include='reference.RFC.5905'?>
 
       <?rfc include='reference.RFC.6422'?>
       <?rfc include='reference.RFC.6603'?>
-      <?rfc include='reference.RFC.6724'?>
       <?rfc include='reference.RFC.6879'?>
       <?rfc include='reference.RFC.6939'?>
 
@@ -7087,9 +6520,9 @@
       <?rfc include='reference.RFC.7721'?>
       <?rfc include='reference.RFC.7824'?>
       <?rfc include='reference.RFC.7844'?>
+      <?rfc include='reference.RFC.7943'?>
       <?rfc include='reference.RFC.7969'?>
 
-      <?rfc include='reference.RFC.8156'?>
       <?rfc include='reference.RFC.8168'?>
 
       <reference anchor="TR-187"
@@ -7122,164 +6555,46 @@
 
     <section anchor="ChangeSummary" title="Summary of Changes">
 
-      <t>This appendix provides a summary of the significant changes made
-      to this updated DHCPv6 specification.</t>
+      <t>This appendix provides a summary of the changes made from
+      RFC8415:
 
-      <t><list style="numbers">
-<t>The Introduction (<xref target="intro-and-overview"/>) was reorganized and
-updated. In particular, the client/server message exchanges were moved into
-a new (and expanded) section on their own (see 
-<xref target="Client-Server-Exchanges"/>).</t>
+      <list style="numbers">
+<t>The following mechanisms were deprecated. These were not widely
+deployed while adding complexity to client and server implementations.
+Legacy implementations MAY support them, but implementations conformant
+to this document MUST NOT rely on them. Obsoleting these features does
+not cause any interoperatability issues when mixing updated and non-updates
+clients, relay agents, and servers as these mechanisms were "optional".
 
-<t>New sections were added to discuss the relationship to previous
-DHCPv6 documents and also to DHCPv4.</t>
+      <list style="hanging">
+      <t hangText="IA_TA option.">
+      The Identity Association for Temporary
+      Addresses Option has been deprecated. A client that
+      needs a short-term / special
+      purpose address can use a new IA_NA binding to request an
+      address and release it when finished with it.</t>
 
-<t>Sections <xref target="requirements" format="counter"/> ("Requirements")
-and <xref target="background" format="counter"/> ("Background") had
-very minor edits.</t>
+      <t hangText="UNICAST option.">
+      The Server Unicast Option has been deprecated. Use of this
+      was rarely practical as typically relay agents between the
+      client and server need to gleam information from the
+      communication and cannot be bypassed.</t>
+      </list>
+</t>
 
-<t><xref target="terminology"/> ("Terminology") had minor edits.</t>
+<t>The following errata for RFC&nbsp;8415 were incorporated:
+Erratum IDs 6159 and 6183. Note that Erratum ID 6269 was no longer
+applicable after the Server Unicast Option was deprecated.
+</t>
 
-<t><xref target="dhcp-terminology"/> ("DHCP Terminology") was expanded to
-incorporate definitions from RFC 3633, add T1/T2 definitions, 
-add definitions useful in describing combined address assignment and
-prefix delegation operations, and improve some existing definitions.</t>
+<t>A reference to RFC&nbsp;7943 was added to <xref target="addr-assign-ia-na"/> as
+it documents a method that might be used to generate addresses and was
+inadvertently missed when compiling RFC&nbsp;8415.
+</t>
 
-<t><xref target="Client-Server-Exchanges"/> ("Client/Server Exchanges") was
-added from material previously in Section&nbsp;1 of RFC&nbsp;3315
-("Introduction and Overview") and was expanded.</t>
+      </list>
+      </t>
 
-<t><xref target="OpModes"/> ("Operational Models") is new.  It provides
-information on the kinds of DHCP clients and how they operate.</t>
-
-<t><xref target="dhcp-constants"/> ("DHCP Constants") was primarily updated
-to add constants from RFC 4242 and RFC 7083. Note that the default
-HOP_COUNT_LIMIT value was reduced from 32 to 8.</t>
-
-<t>Sections <xref target="RFC3315-6" format="counter"/>
-("Client/Server Message Formats"),
-<xref target="RFC3315-7" format="counter"/>
-("Relay Agent/Server Message Formats"),
-and <xref target="RFC3315-8" format="counter"/>
-("Representation and Use of Domain Names")
-had only very minor changes.</t>
-
-<t><xref target="RFC3315-9"/> ("DHCP Unique Identifier (DUID)") now
-discourages, rather than disallows, a server to parse the DUID;
-now includes some information on the DUID-UUID (RFC 6355); and
-had other minor edits.</t>
-
-<t><xref target="RFC3315-10"/> ("Identity Association") was expanded to better
-explain the concept and to also include prefix delegation.</t>
-
-<t><xref target="RFC3315-11"/> ("Assignment to an IA") incorporates material
-from two sections (11 and 12) of RFC 3315 and also includes a section on
-prefix delegation.</t>
-
-<t><xref target="RFC3315-13"/> ("Transmission of Messages by a Client") was
-expanded to include rate limiting by clients and how clients should handle T1
-or T2 values of 0.</t>
-
-<t><xref target="RFC3315-14"/> ("Reliability of Client-Initiated Message
-Exchanges") was expanded to clarify that the Elapsed Time option
-must be updated in retransmitted messages and that a client is not required to
-listen for DHCP traffic for the entire retransmission period.</t>
-
-<t><xref target="RFC3315-15"/> ("Message Validation") had minor edits.</t>
-
-<t><xref target="RFC3315-16"/> ("Client Source Address and Interface
-Selection") was expanded to include prefix delegation.</t>
-
-<t><xref target="configuration-exchange"/> ("DHCP Configuration Exchanges")
-consolidates what used to be in the following sections in RFC 3315:
-"DHCP Server Solicitation" (Section 17),
-"DHCP Client-Initiated Configuration Exchange" (Section 18), and
-"DHCP Server-Initiated Configuration Exchange" (Section 19).
-This material was reorganized and enhanced, and it incorporates prefix
-delegation from RFC 3633 and other changes from RFC 4242, RFC 7083, and
-RFC 7550. A few changes of note:
-
-     <list style="letters">
-               <t>The Option Request option is no longer optional for some
-               messages (Solicit and Information-request), as RFC 7083 requires
-               clients to request SOL_MAX_RT or INF_MAX_RT options.</t>
-               <t>The Reconfigure message should no longer contain
-               IA_NA&wj;/IA_PD, ORO, or other options to indicate to the
-               client what was reconfigured. The client should request
-               everything it needs in the response to the Reconfigure.</t>
-               <t>The lifetime and T1/T2 hints should not be sent by a client
-               (it should send values of 0 in these fields), and any
-               non&nbhy;zero values should be ignored by the server.</t>
-               <t>Clarified that a server may return different addresses
-               in the Reply than requested by a client in the Request message.
-               Also clarified that a server must not include addresses that it
-               will not assign.</t>
-             </list>
-
-    Also, <xref target="RFC3315-18.2.12"/> ("Refreshing Configuration
-    Information") was added to indicate use cases for when a client should try
-    to refresh network information.</t>
-
-<t><xref target="RFC3315-20"/> ("Relay Agent Behavior") incorporates
-RFC&nbsp;7283 and had minor edits. A new section, "Interaction between
-Relay Agents and Servers" (<xref target="relay-srv-interaction"/>),
-was added.</t>
-
-<t><xref target="RFC3315-21"/> ("Authentication of DHCP Messages") includes
-significant changes: IPsec materials were mostly removed and replaced
-with a reference to RFC&nbsp;8213, and the delayed authentication protocol
-has been obsoleted (see <xref target="obsolete"/>).
-Note that RKAP is still considered current.</t>
-
-<t><xref target="RFC3315-22"/> ("DHCP Options") was expanded to incorporate
-OPTION_IA_PD and OPTION_IAPREFIX from RFC 3633, the Information Refresh Time
-option (OPTION_INFORMATION_REFRESH_TIME) from RFC&nbsp;4242, and the
-SOL_MAX_RT and INF_MAX_RT options from RFC&nbsp;7083. Some additional
-edits were made to clarify option handling, such as which options
-should not be in an Option Request option.</t>
-
-<t>The security considerations (<xref target="security"/>) were updated to
-expand the discussion of security threats and include material from the
-incorporated documents, primarily RFC 3633.</t>
-
-<t>New privacy considerations were added (<xref target="privacy"/>) to
-account for privacy issues.</t>
-
-<t><xref target="iana"/> ("IANA Considerations") was rewritten to reflect
-the changes requested for this document, as other documents have already
-made the message, option, DUID, and status code assignments and
-this document does not add any new assignments.</t>
-
-<t><xref target="obsolete"/> ("Obsoleted Mechanisms") is a new section
-that documents the mechanisms obsoleted by this specification.</t>
-
-<t>Appendices <xref target="RFC3315-A" format="counter"/>
-("Appearance of Options in Message Types") and
-<xref target="RFC3315-B" format="counter"/> ("Appearance of Options in the
-"options" Field of DHCP Options") were updated to reflect the incorporated
-options from RFC 3633, RFC 4242, and RFC 7083.</t>
-
-<t>Where appropriate, informative references have been added to
-provide further background and guidance throughout the document (as
-can be noted by the vast increase in references).</t>
-           
-<t>Changes were made to incorporate the following errata for
-RFC&nbsp;3315: Erratum IDs 294, 295, 1373, 1815, 2471, 2472, 2509, 2928, 3577,
-5450; RFC&nbsp;3633: Erratum IDs 248, 2468, 2469, 2470, 3736; and
-RFC&nbsp;3736: Erratum ID 3796. Note that Erratum ID 1880 for RFC&nbsp;3633
-no longer applies, as servers (delegating routers) ignore received
-T1/T2 hints (see (C) in item 17 above).</t>
-
-<t>General changes to other IPv6 specifications, such as removing
-the use of site-local unicast addresses and adding unique local addresses,
-were made to the document.</t>
-   
-<t>It should be noted that this document does not refer to all DHCPv6
-functionality and specifications. Readers of this specification should
-visit &lt;https://www.iana.org/assignments/dhcpv6-parameters&gt;
-and &lt;https://datatracker.ietf.org/wg/dhc/&gt; to learn of the
-RFCs that define DHCPv6 messages, options, status&nbsp;codes, and more.</t>
-     </list></t>
     </section>
 
     <section anchor="RFC3315-A" title="Appearance of Options in Message Types">
@@ -7291,8 +6606,8 @@ RFCs that define DHCPv6 messages, options, status&nbsp;codes, and more.</t>
 
       <figure>
         <artwork><![CDATA[
-        Client Server IA_NA/                  Elap. Relay       Server
-          ID     ID   IA_TA IA_PD  ORO   Pref Time   Msg. Auth. Unicast
+        Client Server                         Elap. Relay
+          ID     ID   IA_NA IA_PD  ORO   Pref Time   Msg. Auth.
 Solicit   *             *     *     *           *
 Advert.   *      *      *     *           *
 Request   *      *      *     *     *           *
@@ -7301,7 +6616,7 @@ Renew     *      *      *     *     *           *
 Rebind    *             *     *     *           *
 Decline   *      *      *     *                 *
 Release   *      *      *     *                 *
-Reply     *      *      *     *                             *     *
+Reply     *      *      *     *                             *
 Reconf.   *      *                                          *
 Inform.   * (see note)              *           *
 R-forw.                                               *
@@ -7370,11 +6685,11 @@ R-repl.
 
       <figure>
         <artwork><![CDATA[
-                Top-    IA_NA/                        RELAY-  RELAY-
-                Level   IA_TA  IAADDR IA_PD  IAPREFIX FORW    REPL
+                Top-                                  RELAY-  RELAY-
+                Level   IA_NA  IAADDR IA_PD  IAPREFIX FORW    REPL
 Client ID          *
 Server ID          *
-IA_NA/IA_TA        *
+IA_NA.             *
 IAADDR                     *
 IA_PD              *
 IAPREFIX                                 *
@@ -7383,7 +6698,6 @@ Preference         *
 Elapsed Time       *
 Relay Message                                            *       *
 Authentic.         *
-Server Uni.        *
 Status Code        *       *             *
 Rapid Comm.        *
 User Class         *
@@ -7407,44 +6721,21 @@ INF_MAX_RT         *
 
     <section title="Acknowledgments" numbered="no">
 
-      <t>This document is merely a refinement of earlier work by the
-      authors of the following documents and would not be possible without
-      their original work:</t>
-
-      <t><list style="symbols">
-      <t>RFC 3315 (Ralph Droms, Jim Bound, Bernie Volz, Ted Lemon, Charles
-      Perkins, and Mike Carney)</t>
-
-      <t>RFC 3633 (Ole Troan and Ralph Droms)</t>
-
-      <t>RFC 3736 (Ralph Droms)</t>
-
-      <t>RFC 4242 (Stig Venaas, Tim Chown, and Bernie Volz)</t>
-
-      <t>RFC 7083 (Ralph Droms)</t>
-
-      <t>RFC 7283 (Yong Cui, Qi Sun, and Ted Lemon)</t>
-
-      <t>RFC 7550 (Ole Troan, Bernie Volz, and Marcin Siodelski)</t>
-   </list></t>
+      <t>This document is merely a refinement of earlier work as described
+      in RFC&nbsp;8415 and by the authors of that document.
+      </t>
 
       <t>A number of additional people have contributed to identifying issues
-      with RFC 3315 and RFC 3633 and proposed resolutions to these issues as
-      reflected in this document (listed here in no particular order):
-      Ole Troan, Robert Marks, Leaf Yeh, Michelle Cotton, Pablo Armando,
-      John Brzozowski, Suresh Krishnan, Hideshi Enokihara, Alexandru Petrescu,
-      Yukiyo Akisada, Tatuya Jinmei, Fred Templin, and Christian Huitema.</t>
+      with RFC&nbsp;8415: Fernando Gont, Felix Hamme, and Rene Engel.
+      </t>
 
-      <t>We also thank the following, not otherwise acknowledged and in no
-      particular order, for their review comments: Jeremy Reed, Francis Dupont,
-      Lorenzo Colitti, Tianxiang Li, Ian Farrer, Yogendra Pal,
-      Kim Kinnear, Shawn Routhier, Michayla Newcombe, Alissa Cooper,
-      Allison Mankin, Adam Roach, Kyle Rose, Elwyn Davies, Eric Rescorla,
-      Ben Campbell, Warren Kumari, and Kathleen Moriarty.</t>
+      <t>We also thank the following for their review of this updated
+      document: XXX.
+      </t>
 
-      <t>Also, special thanks to Ralph Droms for answering many questions
-      related to the original RFC 3315 and RFC 3633 work and for shepherding
-      this document through the IETF process.</t>
+      <t>Also, special thanks to XXX for shepherding this document
+      through the IETF process.
+      </t>
     </section>
 
   </back>
