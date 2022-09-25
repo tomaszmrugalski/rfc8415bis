@@ -481,7 +481,7 @@
 
             <t hangText="IA_TA">Identity Association for Temporary Addresses:
             an IA that carries temporary addresses (see <xref
-            target="RFC4941"/>). See <xref target="RFC8415"/>
+            target="RFC8981"/>). See <xref target="RFC8415"/>
             for details on the now obsoleted IA_TA option.</t>
 
             <t hangText="lease">A contract by which the server grants the use
@@ -1795,7 +1795,7 @@
 
         <t>By default, DHCP server implementations SHOULD NOT generate
         predictable addresses (see Section&nbsp;4.7 of <xref target="RFC7721"/>). Server
-        implementers are encouraged to review <xref target="RFC4941"/>,
+        implementers are encouraged to review <xref target="RFC8981"/>,
         <xref target="RFC7824"/>, <xref target="RFC7707"/>, and
         <xref target="RFC7943"/> as to
         possible considerations for how to generate addresses.</t>
@@ -6494,7 +6494,6 @@
       <?rfc include='reference.RFC.4242'?>
       <?rfc include='reference.RFC.4477'?>
       <?rfc include='reference.RFC.4704'?>
-      <?rfc include='reference.RFC.4941'?>
       <?rfc include='reference.RFC.4943'?>
       <?rfc include='reference.RFC.4994'?>
 
@@ -6524,6 +6523,7 @@
       <?rfc include='reference.RFC.7969'?>
 
       <?rfc include='reference.RFC.8168'?>
+      <?rfc include='reference.RFC.8981'?>
 
       <reference anchor="TR-187"
                  target="https://www.broadband-forum.org/technical/download/TR-187_Issue-2.pdf">
@@ -6689,7 +6689,7 @@ R-repl.
                 Level   IA_NA  IAADDR IA_PD  IAPREFIX FORW    REPL
 Client ID          *
 Server ID          *
-IA_NA.             *
+IA_NA              *
 IAADDR                     *
 IA_PD              *
 IAPREFIX                                 *
