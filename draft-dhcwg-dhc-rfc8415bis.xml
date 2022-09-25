@@ -6401,7 +6401,7 @@
       &lt;https://www.iana.org/assignments/dhcpv6-parameters&gt;.</t>
 
       <t>IANA is requested to mark the IA_TA (option code 4) and
-      UNICAST (option code 12) at
+      UNICAST (option code 12) in the Options Code table at
       &lt;https://www.iana.org/assignments/dhcpv6-parameters&gt; as
       obsolete.
       </t>
