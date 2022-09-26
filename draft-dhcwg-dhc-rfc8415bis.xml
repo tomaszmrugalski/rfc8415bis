@@ -10,7 +10,7 @@
 <?rfc sortrefs="yes" ?>
 <?rfc compact="yes" ?>
 <?rfc subcompact="no" ?>
-<?rfc text-list-symbols="-*+o"?> 
+<?rfc text-list-symbols="-*+o"?>
 
 <rfc category="std" docName="draft-dhcwg-dhc-rfc8415bis-00"
      ipr="pre5378Trust200902"
@@ -212,7 +212,7 @@
         using the IA_TA option and allowing clients to unicast some messages
         directly to the server if the server sent the Server Unicast option
         to a client in an early exchange.
-        For a complete list of changes made to <xref target="RFC8415"/> 
+        For a complete list of changes made to <xref target="RFC8415"/>
         see <xref target="ChangeSummary"/>.</t>
       </section>
 
@@ -272,7 +272,7 @@
       <t><xref target="RFC4861"/> ("Neighbor Discovery for IP version 6
       (IPv6)")</t>
     </list></t>
-     <t>These specifications enable DHCP to build upon the 
+     <t>These specifications enable DHCP to build upon the
       IPv6 work to provide robust stateful autoconfiguration.</t>
 
       <t><xref target="RFC4291"/> defines the address scope that can be used
@@ -441,7 +441,7 @@
             participant. Each DHCP client and server has exactly one DUID. See
             <xref target="RFC3315-9"/> for details of the ways in which
             a DUID may be constructed.</t>
-             
+
             <t hangText="encapsulated option">A DHCP option that is usually
             only contained in another option. For example, the IA Address
             option is contained in IA_NA options (see
@@ -460,7 +460,7 @@
             of a lease in the IA. At the time of writing this document, there
             are three IA types defined: IA_NA, IA_TA (obsoleted), and IA_PD. New IA types
             may be defined in the future.</t>
-             
+
             <t hangText="IA option(s)">At the time of writing this document,
             one or more IA_NA, IA_TA (obsoleted), and/or IA_PD options. New IA types may
             be defined in the future.</t>
@@ -475,7 +475,7 @@
             target="RFC3315-22.4"/> for details on the IA_NA option.</t>
 
             <t hangText="IA_PD">Identity Association for Prefix Delegation: an
-            IA that carries delegated prefixes. 
+            IA that carries delegated prefixes.
             See <xref target="IA_PD-option"/> for details on the
             IA_PD option.</t>
 
@@ -513,7 +513,7 @@
             as required by the DHCP specifications. In particular, the
             client updates the value of the Elapsed Time option in the
             retransmitted message.</t>
-             
+
             <t hangText="RKAP">The Reconfiguration Key Authentication
             Protocol (see <xref target="reconfigure-protocol"/>).</t>
 
@@ -579,14 +579,14 @@
         <t>When a DHCP client does not need to have a DHCP server assign
         IP addresses or delegated prefixes to it, the client can obtain other
         configuration information such as a
-        list of available DNS servers <xref target="RFC3646"/> or 
+        list of available DNS servers <xref target="RFC3646"/> or
         NTP servers <xref target="RFC5908"/> through a single message and
         reply exchange with a DHCP server. To obtain other configuration
         information, the client first sends an Information-request message to
         the All_DHCP_Relay_Agents_and_Servers multicast address. Servers
         respond with a Reply message containing the other configuration
         information for the client.</t>
-           
+
         <t>A client may also request the server to expedite address assignment
         and/or prefix delegation by using a two-message
         exchange instead of the normal four-message exchange as discussed
@@ -672,7 +672,7 @@
       <t>This document assumes that the DHCP servers and the client,
       communicating with the servers via a specific interface, belong to a
       single provisioning domain.</t>
-         
+
       <t>DHCP may be extended to support additional stateful services that
       may interact with one or more of the models described below. Such
       interaction should be considered and documented as part of any future
@@ -722,7 +722,7 @@
         <t>Typically, clients request other configuration parameters, such as
         the DNS name server addresses and domain search lists, when requesting
         addresses.</t>
-           
+
         <t>Clients can also request more than one address or set of addresses
         (see Sections&nbsp;<xref target="multiple-addrs" format="counter"/>
         and <xref target="RFC3315-10" format="counter"/>).</t>
@@ -942,7 +942,7 @@
         <t>DHCP defines the following message types. The formats of these
         messages are provided in
         Sections&nbsp;<xref target="RFC3315-6" format="counter"/> and
-        <xref target="RFC3315-7" format="counter"/>. 
+        <xref target="RFC3315-7" format="counter"/>.
         Additional message types
         have been defined and may be defined in the future; see
         &lt;https://www.iana.org/assignments/dhcpv6-parameters&gt;.
@@ -1871,7 +1871,7 @@
                title="Client Behavior when T1 and/or T2 Are 0">
         <t>In certain cases, T1 and/or T2 values may be set to 0. Currently,
         there are three such cases:
-             
+
       <list style="numbers">
         <t>a client received an IA_NA option (see <xref target="RFC3315-22.4"/>) with a zero value</t>
         <t>a client received an IA_PD option (see <xref target="IA_PD-option"/>) with a zero value</t>
@@ -1936,7 +1936,7 @@
 
           <t hangText="   RAND">Randomization factor</t>
         </list></t>
-         
+
       <t>Specific values for each of these parameters relevant to the
       various messages are given in the subsections of
       <xref target="Client-Behavior"/>, using values defined in
@@ -2111,7 +2111,7 @@
         <t>Clients MUST discard any received Confirm messages.</t>
 
         <t>Servers MUST discard any received Confirm messages that do not
-        include a Client Identifier option (see <xref target="RFC3315-22.2"/>) 
+        include a Client Identifier option (see <xref target="RFC3315-22.2"/>)
         or that do include a Server Identifier option (see
         <xref target="RFC3315-22.3"/>).</t>
       </section>
@@ -2456,7 +2456,7 @@
       </figure>
 
      <section title="A Single Exchange for Multiple IA Options">
-         
+
       <t>This document assumes that a client SHOULD use a single transaction
       for all of the IA options required on an interface; this simplifies
       the client implementation and reduces the potential number of
@@ -2472,7 +2472,7 @@
       However, because some servers may not yet conform to this requirement,
       a client MUST be prepared to select appropriate T1/T2 times as
       described in <xref target="RFC3315-18.1.3"/>.</t>
-          
+
      </section>
 
       <section anchor="Client-Behavior" title="Client Behavior">
@@ -3406,7 +3406,7 @@
             response to a Confirm message, the client performs DHCP server
             discovery as described in <xref target="configuration-exchange"/>.</t>
           </section>
-             
+
           <section anchor="reply-inforequest" title="Reply for Information-request">
             <t>Refer to <xref target="RFC4242-Option"/> for details on how the
             Information Refresh Time option (whether or not present in the
@@ -3498,12 +3498,12 @@
           retransmission parameters should be set as for the Confirm message
           (see <xref target="RFC3315-18.1.2"/>). The client includes IA_NAs and IA_PDs,
           along with the associated leases, in its Rebind message.</t>
-    
+
           <t>If the client has only obtained network information using Information-request/Reply
           message exchanges, the client MUST initiate an Information-request/Reply message exchange as
           described in <xref target="RFC3315-18.1.5"/>.</t>
 
-          <t>If not associated with one of the above-mentioned conditions, a client SHOULD 
+          <t>If not associated with one of the above-mentioned conditions, a client SHOULD
           initiate a Renew/Reply exchange (as if the T1 time expired) as described in
           <xref target="RFC3315-18.1.3"/> or an Information-request/Reply exchange as
           described in <xref target="RFC3315-18.1.5"/> if the client detects a
@@ -3511,7 +3511,7 @@
           available on the link (when new prefixes are added or existing prefixes
           are deprecated), as this may indicate a configuration change.  However,
           a client MUST rate&nbhy;limit such
-          attempts to avoid flooding a server with requests when there are link issues 
+          attempts to avoid flooding a server with requests when there are link issues
           (for example, only doing one of these at most every 30&nbsp;seconds).</t>
 
           </section>
@@ -3551,7 +3551,7 @@
         been configured to return to the client. The server MAY return
         additional options to the client if it has been configured to do
         so.</t>
-           
+
         <t>Any message sent from a client may arrive at the server
         encapsulated in one or more Relay-forward messages. The server MUST
         use the received message to construct the proper Relay-reply
@@ -3598,7 +3598,7 @@
           discards the Solicit message.</t>
 
           <t>If (1) the server is permitted to respond to the client,
-          (2)&nbsp;the client has not included a Rapid Commit option (see 
+          (2)&nbsp;the client has not included a Rapid Commit option (see
           <xref target="RFC3315-22.14"/>) in the Solicit message, or
           (3)&nbsp;the server has not been configured to respond with
           committed assignments of leases and other resources, the server
@@ -4312,7 +4312,7 @@
           <t>This address will be used by the server to determine the link
           from which the client should be assigned leases and other
           configuration information.</t>
-             
+
           <t>The hop-count value in the Relay-forward message is set to 0.</t>
 
           <t>If the relay agent cannot use the address in the link-address
@@ -4691,7 +4691,7 @@
       <t>This document describes the DHCP options defined as part of the base
       DHCP specification. Other options may be defined in the future in
       separate documents. See <xref target="RFC7227"/> for guidelines regarding
-      the definition of new options. 
+      the definition of new options.
       See <xref target="iana"/> for additional information about the
       DHCPv6 "Option Codes" registry maintained by IANA.</t>
 
@@ -4910,7 +4910,7 @@
         values in those fields are 0. The values in the T1 and T2 fields
         are the number of seconds until T1 and T2 and are calculated since
         reception of the message.</t>
-           
+
         <t>As per <xref target="RFC3315-5.6"/>, the value 0xffffffff is
         taken to mean "infinity" and should be used carefully.</t>
 
@@ -5271,7 +5271,7 @@
             this Authentication option. A variable-length field (11&nbsp;octets
             less than the value in the option-len field).</t>
           </list></t>
-           
+
           <t>IANA maintains a registry for the protocol, algorithm, and RDM
           values at &lt;https://www.iana.org/assignments/auth-namespaces&gt;.</t>
       </section>
@@ -5314,7 +5314,7 @@
             encoded in this option. A 2-octet field containing
             an unsigned integer.</t>
 
-            <t hangText="   status-message">A UTF-8 encoded 
+            <t hangText="   status-message">A UTF-8 encoded
             <xref target="RFC3629"/> text string
             suitable for display to an end user. MUST&nbsp;NOT be
             null-terminated. A variable-length field (2&nbsp;octets
@@ -5329,7 +5329,7 @@
         <t>The status-code values previously defined by <xref
         target="RFC3315"/> and <xref target="RFC3633"/>&nbsp;are:</t>
 
-<?rfc compact="no"?>   
+<?rfc compact="no"?>
         <texttable anchor="Status-Code-Table" title="Status Code Definitions">
           <ttcol>Name</ttcol>
 
@@ -5387,7 +5387,7 @@
         </texttable>
   <?rfc compact="yes"?>
 
-        <t>See the "Status Codes" registry at 
+        <t>See the "Status Codes" registry at
         &lt;https://www.iana.org/assignments/dhcpv6-parameters&gt;
         for the current list of status codes.</t>
       </section>
@@ -5432,7 +5432,7 @@
             confirmation that the client has received the Reply message.
             Therefore, if more than one server responds to a Solicit that
             includes a Rapid Commit option, all but one server will commit
-            leases that are not actually used by the client; this could 
+            leases that are not actually used by the client; this could
             result in incorrect address information in DNS if the DHCP servers
             update DNS <xref target="RFC4704"/>, and responses to
             leasequery requests <xref target="RFC5007"/> may include
@@ -5789,7 +5789,7 @@
         server whether the client is willing to accept Reconfigure messages,
         and a server uses this option to tell the client whether or not to
         accept Reconfigure messages. In the absence of this option, the
-        default behavior is that the client is unwilling to accept 
+        default behavior is that the client is unwilling to accept
         Reconfigure messages. The format of the Reconfigure Accept
         option is:</t>
 
@@ -6227,7 +6227,7 @@
       perimeter gateways of the enterprise). Regardless of the gateway
       configuration, however, the potential attacks by insiders and
       outsiders are the same.</t>
-         
+
       <t>DHCP lacks end-to-end encryption between clients and servers; thus,
       hijacking, tampering, and eavesdropping attacks are all possible
       as a result. Some network environments (discussed below) can be
@@ -6346,7 +6346,7 @@
       premature reconfiguration, but this is relatively easily prevented by
       disallowing direct client-to-client communication on these networks or
       using <xref target="RFC7610"/> and <xref target="RFC7513"/>.</t>
-           
+
       </list></t>
 
     </section>
@@ -6446,7 +6446,7 @@
           <date />
         </front>
       </reference>
-         
+
       <reference anchor="IANA-HARDWARE-TYPES" target="https://www.iana.org/assignments/arp-parameters">
         <front>
           <title>Hardware Types</title>
@@ -6530,7 +6530,7 @@
           <date year="2013" month="February" />
         </front>
       </reference>
-         
+
       <reference anchor="IEEE-802.1x"
              target="https://ieeexplore.ieee.org/servlet/opac?punumber=5409757">
         <front>
@@ -6594,7 +6594,7 @@ inadvertently missed when compiling RFC&nbsp;8415.
     <section anchor="RFC3315-A" title="Appearance of Options in Message Types">
       <t>The following tables indicate with a "*" the options that are allowed
       in each DHCP message type.</t>
-         
+
       <t>These tables are informational. If they conflict with text earlier
       in this document, that text should be considered authoritative.</t>
 
@@ -6643,11 +6643,11 @@ R-forw.                             *      *
 R-repl.                             *      *
 ]]></artwork>
       </figure>
-         
+
       <figure>
         <artwork><![CDATA[
         SOL_MAX_RT  INF_MAX_RT
-Solicit 
+Solicit
 Advert.    *
 Request
 Confirm
@@ -6661,7 +6661,7 @@ Inform.
 R-forw.
 R-repl.
 ]]></artwork>
-      </figure>         
+      </figure>
 
     </section>
 
@@ -6673,7 +6673,7 @@ R-repl.
       in other options defined in this document. Other RFCs may define
       additional situations where options defined in this document are
       encapsulated in other options.</t>
-         
+
       <t>This table is informational. If it conflicts with text earlier in
       this document, that text should be considered authoritative.</t>
 
