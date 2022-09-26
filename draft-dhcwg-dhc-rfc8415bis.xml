@@ -6407,21 +6407,21 @@
   <back>
     <references title="Normative References">
 
-      <?rfc include='reference.RFC.0768'?>
-      <?rfc include='reference.RFC.1035'?>
-      <?rfc include='reference.RFC.2119'?>
-      <?rfc include='reference.RFC.4291'?>
-      <?rfc include='reference.RFC.4861'?>
-      <?rfc include='reference.RFC.4862'?>
-      <?rfc include='reference.RFC.6221'?>
-      <?rfc include='reference.RFC.6355'?>
-      <?rfc include='reference.RFC.7227'?>
-      <?rfc include='reference.RFC.7283'?>
-      <?rfc include='reference.RFC.8085'?>
-      <?rfc include='reference.RFC.8174'?>
-      <?rfc include='reference.RFC.8200'?>
-      <?rfc include='reference.RFC.8213'?>
-      <?rfc include='reference.RFC.8415'?>
+      <?rfc include='reference.RFC.0768.xml'?>
+      <?rfc include='reference.RFC.1035.xml'?>
+      <?rfc include='reference.RFC.2119.xml'?>
+      <?rfc include='reference.RFC.4291.xml'?>
+      <?rfc include='reference.RFC.4861.xml'?>
+      <?rfc include='reference.RFC.4862.xml'?>
+      <?rfc include='reference.RFC.6221.xml'?>
+      <?rfc include='reference.RFC.6355.xml'?>
+      <?rfc include='reference.RFC.7227.xml'?>
+      <?rfc include='reference.RFC.7283.xml'?>
+      <?rfc include='reference.RFC.8085.xml'?>
+      <?rfc include='reference.RFC.8174.xml'?>
+      <?rfc include='reference.RFC.8200.xml'?>
+      <?rfc include='reference.RFC.8213.xml'?>
+      <?rfc include='reference.RFC.8415.xml'?>
 
     </references>
 
@@ -6468,56 +6468,56 @@
       </reference>
 
 
-      <?rfc include='reference.RFC.0826'?>
+      <?rfc include='reference.RFC.0826.xml'?>
 
-      <?rfc include='reference.RFC.2131'?>
-      <?rfc include='reference.RFC.2132'?>
-      <?rfc include='reference.RFC.2464'?>
+      <?rfc include='reference.RFC.2131.xml'?>
+      <?rfc include='reference.RFC.2132.xml'?>
+      <?rfc include='reference.RFC.2464.xml'?>
 
-      <?rfc include='reference.RFC.3162'?>
-      <?rfc include='reference.RFC.3290'?>
-      <?rfc include='reference.RFC.3629'?>
-      <?rfc include='reference.RFC.3315'?>
-      <?rfc include='reference.RFC.3633'?>
-      <?rfc include='reference.RFC.3646'?>
-      <?rfc include='reference.RFC.3736'?>
-      <?rfc include='reference.RFC.3769'?>
+      <?rfc include='reference.RFC.3162.xml'?>
+      <?rfc include='reference.RFC.3290.xml'?>
+      <?rfc include='reference.RFC.3629.xml'?>
+      <?rfc include='reference.RFC.3315.xml'?>
+      <?rfc include='reference.RFC.3633.xml'?>
+      <?rfc include='reference.RFC.3646.xml'?>
+      <?rfc include='reference.RFC.3736.xml'?>
+      <?rfc include='reference.RFC.3769.xml'?>
 
-      <?rfc include='reference.RFC.5908'?>
-      <?rfc include='reference.RFC.4193'?>
-      <?rfc include='reference.RFC.4242'?>
-      <?rfc include='reference.RFC.4477'?>
-      <?rfc include='reference.RFC.4704'?>
-      <?rfc include='reference.RFC.4943'?>
-      <?rfc include='reference.RFC.4994'?>
+      <?rfc include='reference.RFC.5908.xml'?>
+      <?rfc include='reference.RFC.4193.xml'?>
+      <?rfc include='reference.RFC.4242.xml'?>
+      <?rfc include='reference.RFC.4477.xml'?>
+      <?rfc include='reference.RFC.4704.xml'?>
+      <?rfc include='reference.RFC.4943.xml'?>
+      <?rfc include='reference.RFC.4994.xml'?>
 
-      <?rfc include='reference.RFC.5007'?>
-      <?rfc include='reference.RFC.5453'?>
-      <?rfc include='reference.RFC.5905'?>
+      <?rfc include='reference.RFC.5007.xml'?>
+      <?rfc include='reference.RFC.5453.xml'?>
+      <?rfc include='reference.RFC.5905.xml'?>
 
-      <?rfc include='reference.RFC.6422'?>
-      <?rfc include='reference.RFC.6603'?>
-      <?rfc include='reference.RFC.6879'?>
-      <?rfc include='reference.RFC.6939'?>
+      <?rfc include='reference.RFC.6422.xml'?>
+      <?rfc include='reference.RFC.6603.xml'?>
+      <?rfc include='reference.RFC.6879.xml'?>
+      <?rfc include='reference.RFC.6939.xml'?>
 
-      <?rfc include='reference.RFC.7083'?>
-      <?rfc include='reference.RFC.7084'?>
-      <?rfc include='reference.RFC.7136'?>
-      <?rfc include='reference.RFC.7341'?>
-      <?rfc include='reference.RFC.7368'?>
-      <?rfc include='reference.RFC.7513'?>
-      <?rfc include='reference.RFC.7550'?>
-      <?rfc include='reference.RFC.7598'?>
-      <?rfc include='reference.RFC.7610'?>
-      <?rfc include='reference.RFC.7707'?>
-      <?rfc include='reference.RFC.7721'?>
-      <?rfc include='reference.RFC.7824'?>
-      <?rfc include='reference.RFC.7844'?>
-      <?rfc include='reference.RFC.7943'?>
-      <?rfc include='reference.RFC.7969'?>
+      <?rfc include='reference.RFC.7083.xml'?>
+      <?rfc include='reference.RFC.7084.xml'?>
+      <?rfc include='reference.RFC.7136.xml'?>
+      <?rfc include='reference.RFC.7341.xml'?>
+      <?rfc include='reference.RFC.7368.xml'?>
+      <?rfc include='reference.RFC.7513.xml'?>
+      <?rfc include='reference.RFC.7550.xml'?>
+      <?rfc include='reference.RFC.7598.xml'?>
+      <?rfc include='reference.RFC.7610.xml'?>
+      <?rfc include='reference.RFC.7707.xml'?>
+      <?rfc include='reference.RFC.7721.xml'?>
+      <?rfc include='reference.RFC.7824.xml'?>
+      <?rfc include='reference.RFC.7844.xml'?>
+      <?rfc include='reference.RFC.7943.xml'?>
+      <?rfc include='reference.RFC.7969.xml'?>
 
-      <?rfc include='reference.RFC.8168'?>
-      <?rfc include='reference.RFC.8981'?>
+      <?rfc include='reference.RFC.8168.xml'?>
+      <?rfc include='reference.RFC.8981.xml'?>
 
       <reference anchor="TR-187"
                  target="https://www.broadband-forum.org/technical/download/TR-187_Issue-2.pdf">
