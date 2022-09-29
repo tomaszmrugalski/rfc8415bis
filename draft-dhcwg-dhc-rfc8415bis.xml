@@ -87,19 +87,15 @@
     </author>
 
     <author fullname="Sheng Jiang" initials="S." surname="Jiang">
-      <organization abbrev="Huawei">Huawei Technologies Co.,
-      Ltd</organization>
-
+      <organization abbrev="BUPT">Beijing University of Posts and Telecommunications</organization>
       <address>
         <postal>
-          <street>Q14, Huawei Campus, No. 156 Beiqing Road</street>
-
-          <city>Hai-Dian District, Beijing</city>
-          <code>100095</code>
+          <street>No. 10 Xitucheng Road</street>
+          <city>Haidian District, Beijing</city>
           <country>China</country>
         </postal>
 
-        <email>jiangsheng@huawei.com</email>
+        <email>shengjiang@bupt.edu.cn</email>
       </address>
     </author>
 
