@@ -6412,7 +6412,6 @@
       <?rfc include='reference.RFC.6221.xml'?>
       <?rfc include='reference.RFC.6355.xml'?>
       <?rfc include='reference.RFC.7227.xml'?>
-      <?rfc include='reference.RFC.7283.xml'?>
       <?rfc include='reference.RFC.8085.xml'?>
       <?rfc include='reference.RFC.8174.xml'?>
       <?rfc include='reference.RFC.8200.xml'?>
@@ -6499,6 +6498,7 @@
       <?rfc include='reference.RFC.7083.xml'?>
       <?rfc include='reference.RFC.7084.xml'?>
       <?rfc include='reference.RFC.7136.xml'?>
+      <?rfc include='reference.RFC.7283.xml'?>
       <?rfc include='reference.RFC.7341.xml'?>
       <?rfc include='reference.RFC.7368.xml'?>
       <?rfc include='reference.RFC.7513.xml'?>
