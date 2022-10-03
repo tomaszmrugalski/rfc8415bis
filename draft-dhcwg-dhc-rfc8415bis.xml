@@ -4935,6 +4935,10 @@
         <t>The Identity Association for Temporary Addresses (IA_TA) option
         is deprecated. Please refer to <xref target="RFC8415"/> for more
         information on this option.</t>
+
+        <t>The client MUST NOT send this option. The server MUST NOT send this
+        option. When the server receives IA_TA option, the option MUST be
+        ignored and the message processing should continue as usual.</t>
       </section>
 
       <section anchor="RFC3315-22.6" title="IA Address Option">
