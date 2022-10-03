@@ -6572,7 +6572,7 @@ clients, relay agents, and servers as these mechanisms were "optional".
       <t hangText="UNICAST option.">
       The Server Unicast Option has been deprecated. Use of this
       was rarely practical as typically relay agents between the
-      client and server need to gleam information from the
+      client and server need to glean information from the
       communication and cannot be bypassed.</t>
       </list>
 </t>
