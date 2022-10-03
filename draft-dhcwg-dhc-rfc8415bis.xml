@@ -200,7 +200,8 @@
 
         <t><xref target="RFC8415"/> provided a unified, corrected, and cleaned-up
         definition of DHCPv6 that also covered all applicable errata filed
-        against older RFCs. It also obsoleted a small number of mechanisms.</t>
+        against older RFCs. It also obsoleted a small number of mechanisms:
+        delayed authentication, lifetime and timer hints sent by a client.</t>
 
         <t>This document obsoletes <xref target="RFC8415"/> by applying all
         applicable errata and obsoleting two features that have not
