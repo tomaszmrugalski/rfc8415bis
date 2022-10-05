@@ -4936,8 +4936,8 @@
         is deprecated. Please refer to <xref target="RFC8415"/> for more
         information on this option.</t>
 
-        <t>The client MUST NOT send this option. The server MUST NOT send this
-        option. When the server receives IA_TA option, the option MUST be
+        <t>The client SHOULD NOT send this option. The server SHOULD NOT send this
+        option. When the server receives IA_TA option, the option SHOULD be
         ignored and the message processing should continue as usual.</t>
       </section>
 
